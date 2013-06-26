@@ -34,7 +34,8 @@ namespace :db do
                    address: Faker::Address.street_address,
                    city: Faker::Address.city,
                    state: Faker::Address.state_abbr,
-                   phone: Faker::PhoneNumber.phone_number)
+                   phone: Faker::PhoneNumber.phone_number,
+                   zip: "94043")
     end
 
     #Item Descriptions
