@@ -6,35 +6,35 @@ namespace :db do
     puts 'Generating generic bidder and seller'
     User.create!(name: "bidder",
                  email: "bidder@sample.com",
-                 password: "abc123",
-                 password_confirmation: "abc123",
+                 password: "password",
+                 password_confirmation: "password",
                  address: "1600 Amphitheatre Parkway",
                  city: "Mountain View",
                  state: "CA",
                  zip: "94043",
-                 telephone: "650-253-0000")
+                 phone: "650-253-0000")
 
     User.create!(name: "seller",
                  email: "seller@sample.com",
-                 password: "abc123",
-                 password_confirmation: "abc123",
+                 password: "password",
+                 password_confirmation: "password",
                  address: "701 First Avenue",
                  city: "Sunnyvale",
                  state: "CA",
                  zip: "94089",
-                 telephone: "408-349-3300")
+                 phone: "408-349-3300")
 
     #Sample Users
     puts "Generating Sample Users"
     20.times do
       User.create!(name: Faker::Name.name,
                    email: Faker::Internet.email,
-                   password: "abc123",
-                   password_confirmation: "abc123",
+                   password: "password",
+                   password_confirmation: "password",
                    address: Faker::Address.street_address,
                    city: Faker::Address.city,
                    state: Faker::Address.state_abbr,
-                   telephone: Faker::PhoneNumber.phone_number)
+                   phone: Faker::PhoneNumber.phone_number)
     end
 
     #Item Descriptions
