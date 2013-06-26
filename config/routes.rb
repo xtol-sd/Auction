@@ -1,4 +1,10 @@
 Auction::Application.routes.draw do
+  resources :bids
+
+
+  resources :items
+
+
   authenticated :user do
     root :to => 'home#index'
   end
