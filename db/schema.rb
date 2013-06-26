@@ -10,9 +10,8 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended to check this file into your version control system.
-# This is the replacement.
 
-ActiveRecord::Schema.define(:version => 20130626141426) do
+ActiveRecord::Schema.define(:version => 20130626171503) do
 
   create_table "bids", :force => true do |t|
     t.integer  "user_id"
@@ -23,7 +22,6 @@ ActiveRecord::Schema.define(:version => 20130626141426) do
   end
 
   create_table "items", :force => true do |t|
-    t.integer  "user_id"
     t.string   "title"
     t.string   "description"
     t.integer  "start_bid"
