@@ -4,6 +4,18 @@ namespace :db do
     require 'faker'
 
     puts 'Generating generic bidder and seller'
+    
+    User.create!(name: "sponsor",
+                 email: "sponsor@sample.com",
+                 password: "password",
+                 password_confirmation: "password",
+                 address: "1600 Sponsor Way",
+                 city: "Mountain View",
+                 state: "CA",
+                 zip: "94043",
+                 phone: "808-4429-8785")
+
+
     User.create!(name: "bidder",
                  email: "bidder@sample.com",
                  password: "password",
