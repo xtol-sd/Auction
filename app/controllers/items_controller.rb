@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  before_filter :authenticate_user!, :except => [:index]
+
   # GET /items
   # GET /items.json
   def index
