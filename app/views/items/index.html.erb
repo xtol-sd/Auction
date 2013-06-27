@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th></th>
     <th>Title</th>
     <th>Description</th>
     <th>Start bid</th>
@@ -12,6 +13,7 @@
 
 <% @items.each do |item| %>
   <tr>
+    <td><%= image_tag(item.image_url, :height => 50) %></td>
     <td><%= item.title %></td>
     <td><%= item.description %></td>
     <td><%= item.start_bid %></td>

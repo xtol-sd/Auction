@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130626171503) do
+ActiveRecord::Schema.define(:version => 20130627135625) do
 
   create_table "bids", :force => true do |t|
     t.integer  "user_id"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20130626171503) do
     t.integer  "start_bid"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "image"
   end
 
   create_table "roles", :force => true do |t|
