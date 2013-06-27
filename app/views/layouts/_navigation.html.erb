@@ -7,6 +7,11 @@
   </ul>
 
   <ul class="nav pull-right">
+    <% if current_user.has_role? :admin %>
+      <li>
+      <%= link_to 'Admin', users_path %>
+      </li>
+    <% end %>
     <li>
     <%= link_to 'Edit account', edit_user_registration_path %>
     </li>
@@ -14,11 +19,6 @@
     <%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>
     </li>
   
-    <% if current_user.has_role? :admin %>
-      <li>
-      <%= link_to 'Admin', users_path %>
-      </li>
-    <% end %>
   </ul>
 
 <% else %>
