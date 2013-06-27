@@ -39,10 +39,9 @@ namespace :db do
     end
 
     #Item Descriptions
-    puts "Generating Item Descriptions"
+    puts "Generating Sample Items"
     20.times do |n|
       Item.create!(
-        user_id: n+1,
         title: Faker::Lorem.words(2).join(" ").to_s.capitalize,
         description: Faker::Lorem.sentences(2).join(" "),
         start_bid: rand(1..90)
