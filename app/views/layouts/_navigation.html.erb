@@ -1,15 +1,17 @@
-<%= link_to "NCCARF", root_path, :class => 'brand' %>
 <% if user_signed_in? %>
   <ul class="nav">
     <li>
-    <%= link_to 'Auction Items', items_path %>
+      <%= image_tag "nccarf_logo.gif" %>
+    </li>
+    <li>
+      <%= link_to 'Auction Items', items_path %>
     </li>
   </ul>
 
   <ul class="nav pull-right">
     <% if current_user.has_role? :admin %>
       <li>
-      <%= link_to 'Admin', users_path %>
+        <%= link_to 'Admin', users_path %>
       </li>
     <% end %>
     <li>
@@ -22,6 +24,10 @@
   </ul>
 
 <% else %>
+  <%= image_tag "nccarf_logo.gif" %>
+  <span id="subtitle">
+    <b>The Northern California Chapter of the Autism Research Foundation</b>
+  </span>
   <ul class="nav pull-right">
     <li>
     <%= link_to 'Login', new_user_session_path %>
