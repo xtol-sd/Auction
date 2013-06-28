@@ -11,4 +11,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
   attr_accessible :address, :city, :state, :zip, :phone
   
+  has_many :items
+  has_many :bids
+
 end
