@@ -15,7 +15,7 @@
   <tr>
     <td><%= image_tag(item.image_url, :height => 50) %></td>
     <td><%= item.title %></td>
-    <td><%= item.description %></td>
+    <td><%= h truncate(item.description, :length => 120) %></td>
     <td><%= number_to_currency(item.start_bid, :unit => "$") %></td>
     <td><%= link_to 'Show', item %></td>
   </tr>
