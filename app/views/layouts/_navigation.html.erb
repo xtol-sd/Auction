@@ -2,14 +2,14 @@
 <% if user_signed_in? %>
   <ul class="nav">
     <li>
-    <%= link_to 'Auction Items', items_path %>
+      <%= link_to 'Auction Items', items_path %>
     </li>
   </ul>
 
   <ul class="nav pull-right">
     <% if current_user.has_role? :admin %>
       <li>
-      <%= link_to 'Admin', users_path %>
+        <%= link_to 'Admin', users_path %>
       </li>
     <% end %>
     <li>
