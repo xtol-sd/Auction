@@ -6,7 +6,7 @@ namespace :db do
     puts 'Generating generic bidder and seller'
     
     User.create!(name: "sponsor",
-                 email: "sponsor@sample.com",
+                 email: "sponsor@example.com",
                  password: "password",
                  password_confirmation: "password",
                  address: "1600 Sponsor Way",
@@ -17,7 +17,7 @@ namespace :db do
 
 
     User.create!(name: "bidder",
-                 email: "bidder@sample.com",
+                 email: "bidder@example.com",
                  password: "password",
                  password_confirmation: "password",
                  address: "1600 Amphitheatre Parkway",
@@ -27,7 +27,7 @@ namespace :db do
                  phone: "650-253-0000")
 
     User.create!(name: "seller",
-                 email: "seller@sample.com",
+                 email: "seller@example.com",
                  password: "password",
                  password_confirmation: "password",
                  address: "701 First Avenue",
