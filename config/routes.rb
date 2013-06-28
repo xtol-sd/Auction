@@ -1,4 +1,7 @@
 Auction::Application.routes.draw do
+  resources :donations
+
+
   resources :bids
 
   resources :items
