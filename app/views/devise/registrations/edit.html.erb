@@ -6,7 +6,7 @@
   <%= f.input :email, :required => true %>
   <%= f.input :current_password, :label => 'Old Password', :hint => "we need your current password to confirm your changes", :required => true %>
   <%= f.input :password, :label => 'New Password', :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %>
-  <%= f.input :password_confirmation, :label => 'New Passord Confirmation', :required => false %>
+  <%= f.input :password_confirmation, :label => 'New Password Confirmation', :required => false %>
   <%= f.button :submit, 'Update', :class => 'btn-primary' %>
 <% end %>
 <h3>Cancel my account</h3>
