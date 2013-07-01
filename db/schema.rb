@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130628195848) do
+ActiveRecord::Schema.define(:version => 20130701150310) do
 
   create_table "bids", :force => true do |t|
     t.integer  "user_id"
@@ -30,9 +30,9 @@ ActiveRecord::Schema.define(:version => 20130628195848) do
 
   create_table "items", :force => true do |t|
     t.string   "title"
-    t.string   "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.text     "description", :limit => 255
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
     t.string   "image"
     t.decimal  "start_bid"
   end
