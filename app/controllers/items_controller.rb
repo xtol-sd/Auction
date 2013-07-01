@@ -17,7 +17,6 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @bid = Bid.new
-    @user = User.find(current_user)
 
     respond_to do |format|
       format.html # show.html.erb

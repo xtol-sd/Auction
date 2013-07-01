@@ -18,6 +18,7 @@
     <td><%= h truncate(item.description, :length => 120) %></td>
     <td><%= number_to_currency(item.start_bid, :unit => "$") %></td>
     <td><%= link_to 'Show', item %></td>
+    <td><%= link_to 'Bid', item, :class => "btn btn-primary" %></td>
   </tr>
 <% end %>
 </table>
