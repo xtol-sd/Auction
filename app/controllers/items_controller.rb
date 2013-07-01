@@ -27,6 +27,7 @@ class ItemsController < ApplicationController
   # GET /items/new.json
   def new
     @item = Item.new
+    @user = User.find(current_user)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -82,4 +83,5 @@ class ItemsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end
