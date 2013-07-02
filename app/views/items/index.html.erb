@@ -6,6 +6,7 @@
     <th>Name</th>
     <th>Description</th>
     <th>Start Bid</th>
+    <th>Current Bid</th>
     <th></th>
     <th></th>
     <th></th>
@@ -17,6 +18,11 @@
     <td><%= item.title %></td>
     <td><%= h truncate(item.description, :length => 120) %></td>
     <td><%= number_to_currency(item.start_bid, :unit => "$") %></td>
+    <% if !item.bids.nil? %>
+      <td><%= number_to_currency(item.highest_bid(item.start_bid), :unit => "$") %></td>
+    <%else %>
+      <td><%= number_to_currency(item.start_bid, :unit => "$") %></td>
+    <% end %>
     <td><%= link_to 'Show', item %></td>
     <td><%= link_to 'Bid', item, :class => "btn btn-primary" %></td>
   </tr>
