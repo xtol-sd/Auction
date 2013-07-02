@@ -4,8 +4,6 @@
   <tr>
     <th></th>
     <th>Name</th>
-
-    <th>Start Bid</th>
     <th>Current Bid</th>
     <th></th>
     <th></th>
@@ -17,15 +15,12 @@
 
     <td><%= link_to image_tag(item.image_url, :height => 50), item %></td>
     <td><%= link_to item.title, item %></td>
-    
-    <td><%= number_to_currency(item.start_bid, :unit => "$") %></td>
-    <% if !item.bids.nil? %>
+    <% if item.bids %>
       <td><%= number_to_currency(item.highest_bid(item.start_bid), :unit => "$") %></td>
-    <%else %>
+    <% else %>
       <td><%= number_to_currency(item.start_bid, :unit => "$") %></td>
     <% end %>
    
-    <td><%= link_to 'Bid', item, :class => "btn btn-primary" %></td>
   </tr>
 <% end %>
 </table>
