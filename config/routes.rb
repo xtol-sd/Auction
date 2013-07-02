@@ -11,4 +11,5 @@ Auction::Application.routes.draw do
   root :to => "items#index"
   devise_for :users
   resources :users
+  get "my_bids" => "items#my_bids", :as => "_my_bids"
 end

@@ -1,6 +1,11 @@
 class ItemsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index]
 
+
+  def my_bids
+     @items = Item.all
+     @bids = Bid.find_all_by_user_id(current_user)
+  end
   # GET /items
   # GET /items.json
   def index
