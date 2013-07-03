@@ -1,17 +1,17 @@
 Auction::Application.routes.draw do
-  resources :events
-
+  resources :events do
+    resources :items
+  end
 
   resources :donations
 
   resources :bids
 
-  resources :items
 
   authenticated :user do
-    root :to => 'items#index'
+    root :to => 'events#show'
   end
-  root :to => "items#index"
+  root :to => "events#show"
   devise_for :users
   resources :users
   get "my_bids" => "items#my_bids", :as => "_my_bids"

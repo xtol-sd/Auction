@@ -13,7 +13,8 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-    @event = Event.find(params[:id])
+    @event = Event.find_by_current("1")
+    @items = @event.items.all
 
     respond_to do |format|
       format.html # show.html.erb

@@ -1,20 +1,25 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Name:</b>
+<h1>
   <%= @event.name %>
-</p>
+</h1>
 
-<p>
-  <b>Start datetime:</b>
-  <%= @event.start_datetime %>
-</p>
+<table>
+  <tr>
+    <th></th>
+    <th>Name</th>
+    <th>Current Bid</th>
+  </tr>
 
-<p>
-  <b>End datetime:</b>
-  <%= @event.end_datetime %>
-</p>
+<% @items.each do |item| %>
+  <tr>
 
-
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+    <td><%= link_to image_tag(item.image_url, :height => 50), event_item_path(@event, item) %></td>
+    <td><%= link_to item.title, event_item_path(@event, item) %></td>
+    <% if item.bids %>
+      <td><%= number_to_currency(item.highest_bid(item.start_bid), :unit => "$") %></td>
+    <% else %>
+      <td><%= number_to_currency(item.start_bid, :unit => "$") %></td>
+    <% end %>
+   
+  </tr>
+<% end %>
+</table>
