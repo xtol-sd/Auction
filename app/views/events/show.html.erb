@@ -1,5 +1,15 @@
 <h1>
   <%= @event.name %>
+  
+  <div id="countDownTimer"></div> 
+  <script> 
+           var year = <%= @event.end_datetime.strftime("%Y") %>; 
+           var month = <%= @event.end_datetime.strftime("%B") %>; 
+           var day = <%= @event.end_datetime.strftime("%d") %>; 
+           var eventEndDate = new Date(); 
+           eventEndDate = new Date(year, month - 1, day); 
+          $('#countDownTimer').countdown({until: eventEndDate}); 
+  </script>
 </h1>
 
 <table>

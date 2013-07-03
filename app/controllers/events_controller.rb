@@ -16,6 +16,9 @@ class EventsController < ApplicationController
     @event = Event.find_by_current(true)
     @items = @event.items.all
 
+    @date = Time.now
+    @date.strftime("%B %d, %Y")
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @event }
