@@ -18,4 +18,4 @@ puts 'user: ' << user.name
 user.add_role :admin
 
 puts 'FIRST EVENT'
-Event.create
+Event.create({:current => "1"})

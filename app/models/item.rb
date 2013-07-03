@@ -1,5 +1,5 @@
 class Item < ActiveRecord::Base
-  attr_accessible :description, :start_bid, :title, :image, :user_attributes
+  attr_accessible :description, :start_bid, :title, :image, :user_attributes, :event_id
   
   belongs_to :event
   belongs_to :user

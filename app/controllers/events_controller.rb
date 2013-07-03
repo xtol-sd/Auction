@@ -13,7 +13,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-    @event = Event.find_by_current("1")
+    @event = Event.find_by_current(true)
     @items = @event.items.all
 
     respond_to do |format|

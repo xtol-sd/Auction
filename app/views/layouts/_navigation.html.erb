@@ -4,7 +4,7 @@
       <%= image_tag "nccarf_logo.gif" %>
     </li>
     <li>
-      <%= link_to 'Auction Items', event_path(Event.find_by_current("1")) %>
+      <%= link_to 'Auction Items', event_path(Event.find_by_current(true)) %>
     </li>
     <li> <%= link_to 'My Bids', _my_bids_path %>
     </li>
