@@ -58,6 +58,7 @@ namespace :db do
       description: "Antique-look porcelain vase with mottled 
         copper finish, rose design. Footed metal base. 11inch diameter x 15inch high.",
       start_bid: "125.00"
+      event_id: "1"
     )
 
     Item.create!(
@@ -71,6 +72,7 @@ namespace :db do
       John has won over 30 awards at national and internationl model ship and boat building competitions, 
       and has authored over 17 published magazine articles about his work.",
       start_bid: "200.00"
+      event_id: "1"
     )
 
     Item.create!(
@@ -81,12 +83,14 @@ namespace :db do
 
       This set is brand new and in perfect condition with no missing or damaged pages.",
       start_bid: "75.00"
+      event_id: "1"
     )
 
     Item.create!(
       title: "Raiders Season Tickets",
       description: "2013 Season Tickets to the Oakland Raiders.",
       start_bid: "100.00"
+      event_id: "1"
     )
 
     Item.create!(
@@ -97,6 +101,7 @@ namespace :db do
       Praline Pecans, Rub with Love Chicken Rub, Rub with Love Smokey BBQ Rub, Bilardo Bros. Meat Rub, 
       wild margarita meat and seafood seasoning, and metal tongs.", 
       start_bid: "100.00"
+      event_id: "1"
     )
 
 
@@ -109,6 +114,7 @@ namespace :db do
         Summer Beef Sausage, Gourmet California Smoked Almonds, J & M Original Cheese Straws, 
         Los Olivos Wine & Cheese Biscuits, ...in an Oval Dark Stained Gift Basket with Wooden Handles.", 
       start_bid: "100.00"
+      event_id: "1"
     )
 
 
