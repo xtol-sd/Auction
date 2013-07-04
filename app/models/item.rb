@@ -44,5 +44,13 @@ class Item < ActiveRecord::Base
   	end
    my_bid
   end
-   
+
+  def current_user_won?(current_user)
+    if self.event.end_datetime < DateTime.now 
+      if my_highest_bid(current_user, id, self.start_bid) == highest_bid(start_bid)      
+        true
+      end
+    end
+  end
+
 end
