@@ -12,4 +12,8 @@ module ApplicationHelper
     html.html_safe
   end
 
+  def event_over?(event)
+    event.end_datetime < DateTime.now
+  end  
+
 end
