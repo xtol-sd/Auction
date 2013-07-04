@@ -44,5 +44,6 @@ class Item < ActiveRecord::Base
   	end
    my_bid
   end
+  
    
 end
