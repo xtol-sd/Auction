@@ -43,6 +43,11 @@
                       
                       <% end %>
                 </div>
+                <div class="span3">
+                  <% if item.current_user_won?(current_user) %>
+                    </br><span class="label label-success">You won!</span>
+                  <% end %>
+                </div>
                 <%= image_tag "divider-line.gif" %>
               </div>
             </div>
