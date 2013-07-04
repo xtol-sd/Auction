@@ -117,6 +117,12 @@ namespace :db do
       event_id: "1"
     )
 
+  puts 'FIRST EVENT'
+  Event.create({
+    :current => "1",
+    :end_datetime => Date.today + 1.month,
+    :name => "Auction 2013"
+    })
 
   end
 end
