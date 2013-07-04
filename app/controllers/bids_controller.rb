@@ -45,7 +45,7 @@ class BidsController < ApplicationController
 
     respond_to do |format|
       if @bid.save
-        format.html { redirect_to @bid, notice: 'Bid was successfully created.' }
+        format.html { redirect_to _my_bids_path, notice: 'Bid was successfully created.' }
         format.json { render json: @bid, status: :created, location: @bid }
       else
         format.html { render action: "new" }
