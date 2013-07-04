@@ -13,8 +13,12 @@
 </p>
 
 <p>
-  <b>Starting bid:</b>
-  <%= number_to_currency(@item.start_bid, :unit => "$") %>
-</p>
+  <b>Current bid:</b>
 
+<% if @item.bids %>
+      <td><%= number_to_currency(@item.highest_bid(@item.start_bid), :unit => "$") %></td>
+    <% else %>
+      <td><%= number_to_currency(@item.start_bid, :unit => "$") %></td>
+    <% end %>
+</p>
 <%= render "/shared/item_show_bid_form" %>
