@@ -1,17 +1,14 @@
 <h1>
   <%= @event.name %>
-  
-  <div id="countDownTimer"></div> 
-  <script> 
-           var year = <%= @event.end_datetime.strftime("%Y") %>; 
-           var month = <%= @event.end_datetime.strftime("%B") %>; 
-           var day = <%= @event.end_datetime.strftime("%d") %>; 
-           var eventEndDate = new Date(); 
-           eventEndDate = new Date(year, month - 1, day); 
-          $('#countDownTimer').countdown({until: eventEndDate}); 
-  </script>
-</h1>
-
+</h1>  
+<div id="countDownTimer"></div> 
+<script> var year = <%= @event.end_datetime.strftime("%Y") %>; 
+         var month = <%= @event.end_datetime.strftime("%-m") %>; 
+         var day = <%= @event.end_datetime.strftime("%-d") %>; 
+         var eventEndDate = new Date(); 
+         eventEndDate = new Date(year, month - 1, day); 
+         $('#countDownTimer').countdown({until: eventEndDate}); 
+</script>
 <table>
   <tr>
     <th></th>
@@ -21,15 +18,13 @@
 
 <% @items.each do |item| %>
   <tr>
-
     <td><%= link_to image_tag(item.image_url, :height => 50), event_item_path(@event, item) %></td>
     <td><%= link_to item.title, event_item_path(@event, item) %></td>
     <% if item.bids %>
       <td><%= number_to_currency(item.highest_bid(item.start_bid), :unit => "$") %></td>
     <% else %>
       <td><%= number_to_currency(item.start_bid, :unit => "$") %></td>
-    <% end %>
-   
+    <% end %>   
   </tr>
 <% end %>
 </table>
