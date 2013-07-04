@@ -3,7 +3,7 @@
 
   <div class="form-inputs">
     <%= f.hidden_field :user_id, :value => current_user.id %>
-    <%= f.input :item_id, :value => @bid.item.id %>
+    <%= f.hidden_field :item_id, :value => @bid.item.id %>
     <%= f.input :bid_amount %>
   </div>
 
