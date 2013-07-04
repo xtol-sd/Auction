@@ -9,7 +9,7 @@ Auction::Application.routes.draw do
 
 
   authenticated :user do
-    root :to => 'events#show'
+    root :to => 'items#my_bids'
   end
   root :to => "events#show"
   devise_for :users

@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
   def my_bids
      @items = Item.all
      @bids = Bid.find_all_by_user_id(current_user)
+     @bid = Bid.new
   end
   # GET /items
   # GET /items.json
