@@ -17,14 +17,16 @@
     <div class="row">
       <div class="span9"><%= link_to image_tag(item.image_url, :height => 50), event_item_path(@event, item) %></div>
       <div class="span3">
-        <% if item.bids %>
-          <font color="gray"><i>Current Bid:</i></font></br><%= number_to_currency(item.highest_bid(item.start_bid), :unit => "$") %>
-        <% else %>
-          <i><font color="gray"><%= number_to_currency(item.start_bid, :unit => "$") %></font></i>
+        <% if item.bid_upon?(item) %>
+          <% item.bids.each do |bid| %>          
+            <font color="gray"><i>Current Bid:</i></font></br><%= number_to_currency(item.highest_bid(bid.bid_amount), :unit => "$") %>
+          <% end %>
+        <% end %>
+        <% if item.no_bids?(item) %>
+          <i><font color="gray">Start Bid:</br><%= number_to_currency(item.start_bid, :unit => "$") %></font></i>
         <% end %>
       </div>
       <%= image_tag "divider-line.gif" %>
-
     </div>
   </div>
 </div>

@@ -9,6 +9,20 @@ class Item < ActiveRecord::Base
   accepts_nested_attributes_for :user
   mount_uploader :image, ImageUploader
 
+  def bid_upon?(item)
+    item_bids = Bid.find_all_by_item_id(item.id)
+    if !item_bids.nil?
+      true
+    end  
+  end
+
+  def no_bids?(item)
+    item_bids = Bid.find_all_by_item_id(item.id)
+    if item_bids.empty?
+      true
+    end
+  end
+
   def highest_bid(current_bid)
   	  bids.each do |bid|
   		  if bid.bid_amount >= current_bid
