@@ -25,8 +25,12 @@
       <div class="span9"><%= link_to image_tag(item.image_url, :height => 50), event_item_path(@event, item) %></div>
       <div class="span3">
         <% if item.bid_upon?(item) %>
-          <% item.bids.each do |bid| %>          
+        <% bidcheck = 0 %>
+          <% item.bids.each do |bid| %>   
+            <% if bidcheck == 0 %>       
             <font color="gray"><i>Current Bid:</i></font></br><%= number_to_currency(item.highest_bid(bid.bid_amount), :unit => "$") %>
+            <% bidcheck = 1 %>
+            <% end %>
           <% end %>
         <% end %>
         <% if item.no_bids?(item) %>
