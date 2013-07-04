@@ -1,7 +1,7 @@
 <h1>
   <%= @event.name %>
 </h1>  
-<div id="countDownTimer"></div> 
+<div id="countDownTimer" class="span4 "></div> 
 <script> var year = <%= @event.end_datetime.strftime("%Y") %>; 
          var month = <%= @event.end_datetime.strftime("%-m") %>; 
          var day = <%= @event.end_datetime.strftime("%-d") %>; 
