@@ -9,22 +9,24 @@
          eventEndDate = new Date(year, month - 1, day); 
          $('#countDownTimer').countdown({until: eventEndDate}); 
 </script>
-<table>
-  <tr>
-    <th></th>
-    <th>Name</th>
-    <th>Current Bid</th>
-  </tr>
 
 <% @items.each do |item| %>
-  <tr>
-    <td><%= link_to image_tag(item.image_url, :height => 50), event_item_path(@event, item) %></td>
-    <td><%= link_to item.title, event_item_path(@event, item) %></td>
-    <% if item.bids %>
-      <td><%= number_to_currency(item.highest_bid(item.start_bid), :unit => "$") %></td>
-    <% else %>
-      <td><%= number_to_currency(item.start_bid, :unit => "$") %></td>
-    <% end %>   
-  </tr>
+<div class="row">
+  <div class="span12">
+    <%= link_to item.title, event_item_path(@event, item) %>
+    <div class="row">
+      <div class="span9"><%= link_to image_tag(item.image_url, :height => 50), event_item_path(@event, item) %></div>
+      <div class="span3">
+        <% if item.bids %>
+          <font color="gray"><i>Current Bid:</i></font></br><%= number_to_currency(item.highest_bid(item.start_bid), :unit => "$") %>
+        <% else %>
+          <i><font color="gray"><%= number_to_currency(item.start_bid, :unit => "$") %></font></i>
+        <% end %>
+      </div>
+      <%= image_tag "divider-line.gif" %>
+
+    </div>
+  </div>
+</div>
+
 <% end %>
-</table>
