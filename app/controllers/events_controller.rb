@@ -1,4 +1,10 @@
 class EventsController < ApplicationController
+
+  def end_auction
+    event = Event.find(1).update_attribute(:end_datetime => "2013:05:05 16:10:00 UTC")
+    event.save
+  end    
+
   # GET /events
   # GET /events.json
   def index
