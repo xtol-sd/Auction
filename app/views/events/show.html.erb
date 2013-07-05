@@ -1,8 +1,3 @@
- <%# link_to("End Auction", root_path, :data => { :confirm => "Are you sure you want to end this auction?" }, :controller => :events_controller, :action => :end_auction, :class => 'btn btn-mini offset8') %>
-
-<%# link_to "New End Auction", root_path, :onclick => Event.find(1).update_attributes(:end_datetime => "2013:05:05 16:10:00 UTC"), :class => 'btn btn-mini offset8' %>
-
-<%# link_to("Final attempt", root_path, :method => :put, :confirm => "Sure?") %>
  
 <%= link_to("End Auction", edit_event_path(@event), :class => 'btn btn-mini offset10') %>
 
@@ -37,6 +32,22 @@
       <% if item.no_bids?(item) %>
         <i><font color="gray">Start Bid:</br><%= number_to_currency(item.start_bid, :unit => "$") %></font></i>
       <% end %>
+
+
+<!-- item.bids.map(&:bid_amount).max || item.start_bid
+ -->
+        <% if !event_over?(item.event) %>
+              <%= simple_form_for(@bid) do |f| %>
+                <%= f.error_notification %>
+                <%= f.hidden_field :user_id, :value => current_user.id %>
+                <%= f.hidden_field :item_id, :value => item.id  %>
+                <%= f.input :bid_amount, label: false %>
+                <%= f.button :submit, 'Increase Bid', :class => "btn btn-small btn-primary", :confirm => "Bids cannot be retracted. Are you sure?" %>
+              <% end %>  
+        <% end %>  
+
+
+    
     </div>
     <hr />
 

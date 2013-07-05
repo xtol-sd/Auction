@@ -21,6 +21,7 @@ class EventsController < ApplicationController
   def show
     @event = Event.find_by_current(true)
     @items = @event.items.all
+    @bid = Bid.new
 
     respond_to do |format|
       format.html # show.html.erb
