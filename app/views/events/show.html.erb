@@ -32,21 +32,17 @@
       <% if item.no_bids?(item) %>
         <i><font color="gray">Start Bid:</br><%= number_to_currency(item.start_bid, :unit => "$") %></font></i>
       <% end %>
-
-
-<!-- item.bids.map(&:bid_amount).max || item.start_bid
- -->
-        <% if !event_over?(item.event) %>
+        <% if @event.end_datetime >= DateTime.now %>
               <%= simple_form_for(@bid) do |f| %>
                 <%= f.error_notification %>
                 <%= f.hidden_field :user_id, :value => current_user.id %>
                 <%= f.hidden_field :item_id, :value => item.id  %>
                 <%= f.input :bid_amount, label: false %>
                 <%= f.button :submit, 'Increase Bid', :class => "btn btn-small btn-primary", :confirm => "Bids cannot be retracted. Are you sure?" %>
-              <% end %>  
+              <% end %>
+        <% else %>
+
         <% end %>  
-
-
     
     </div>
     <hr />

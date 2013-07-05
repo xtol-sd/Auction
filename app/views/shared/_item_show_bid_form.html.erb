@@ -5,5 +5,5 @@
   <%= f.hidden_field :item_id, :value => params[:id]  %>
   <%= f.input :bid_amount, input_html: { min: @item.top_bid + 1 }  %>
 
-  <%= f.button :submit, 'Place Bid' %>
+  <%= f.button :submit, 'Place Bid', :confirm => "Bids cannot be retracted. Are you sure?" %>
 <% end %>
