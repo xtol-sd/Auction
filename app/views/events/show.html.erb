@@ -1,12 +1,9 @@
-<!-- 
-<%= link_to("End Auction", root_path, :data => { :confirm => "Are you sure you want to end this auction?" }, :controller => :events_controller, :action => :end_auction, :class => 'btn btn-mini offset8') %>
- -->
-<!-- 
-<%= link_to "New End Auction", root_path, :onclick => Event.find(1).update_attributes(:end_datetime => "2013:05:05 16:10:00 UTC"), :class => 'btn btn-mini offset8' %>
- -->
-<!-- 
-<%= link_to("Final attempt", root_path, :method => :put, :confirm => "Sure?") %>
- --> 
+ <%# link_to("End Auction", root_path, :data => { :confirm => "Are you sure you want to end this auction?" }, :controller => :events_controller, :action => :end_auction, :class => 'btn btn-mini offset8') %>
+
+<%# link_to "New End Auction", root_path, :onclick => Event.find(1).update_attributes(:end_datetime => "2013:05:05 16:10:00 UTC"), :class => 'btn btn-mini offset8' %>
+
+<%# link_to("Final attempt", root_path, :method => :put, :confirm => "Sure?") %>
+ 
 <%= link_to("End Auction", edit_event_path(@event), :class => 'btn btn-mini offset10') %>
 
 <h1>
@@ -14,14 +11,16 @@
 </h1>  
 
 <div id="countDownTimer" class="span4 "></div> 
-<script> var year = <%= @event.end_datetime.strftime("%Y") %>; 
-         var month = <%= @event.end_datetime.strftime("%-m") %>; 
-         var day = <%= @event.end_datetime.strftime("%-d") %>; 
-         var eventEndDate = new Date(); 
-         eventEndDate = new Date(year, month - 1, day); 
-         $('#countDownTimer').countdown({until: eventEndDate}); 
+<script> 
+  var year = <%= @event.end_datetime.strftime("%Y") %>; 
+  var month = <%= @event.end_datetime.strftime("%-m") %>; 
+  var day = <%= @event.end_datetime.strftime("%-d") %>; 
+  var eventEndDate = new Date(); 
+  eventEndDate = new Date(year, month - 1, day); 
+  $('#countDownTimer').countdown({until: eventEndDate}); 
 </script>
 <p> This auction will end on: <%= @event.end_datetime.strftime("%B %d, %Y") %></p>
+
 <% @items.each do |item| %>
 <div class="row">
   <div class="span12">

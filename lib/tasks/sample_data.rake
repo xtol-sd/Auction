@@ -3,7 +3,7 @@ namespace :db do
   task populate: :environment do
     require 'faker'
 
-    puts 'Generating generic bidder and seller'
+    puts 'SPONSER, BIDDER, SELLER'
     
     User.create!(name: "sponsor",
                  email: "sponsor@example.com",
@@ -37,7 +37,7 @@ namespace :db do
                  phone: "408-349-3300")
 
     #Sample Users
-    puts "Generating Sample Users"
+    puts "SAMPLE USERS"
     20.times do
       User.create!(name: Faker::Name.name,
                    email: Faker::Internet.email,
@@ -51,7 +51,7 @@ namespace :db do
     end
 
     #Item Descriptions
-    puts "Generating Sample Items"
+    puts "SAMPLE ITEMS"
    
     Item.create!(
       title: "Antique vase",
@@ -117,12 +117,13 @@ namespace :db do
       event_id: "1"
     )
 
+
   puts 'FIRST EVENT'
-  Event.create({
-    :current => "1",
-    :end_datetime => Date.today + 1.month,
+  Event.create!(
+    :current => true,
+    :end_datetime => DateTime.now + 1.month,
     :name => "Auction 2013"
-    })
+  )
 
   end
 end
