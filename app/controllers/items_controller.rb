@@ -22,7 +22,8 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @bid = Bid.new
-
+    @event = Event.find_by_current(true)
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @item }
