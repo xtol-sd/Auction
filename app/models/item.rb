@@ -9,6 +9,10 @@ class Item < ActiveRecord::Base
   accepts_nested_attributes_for :user
   mount_uploader :image, ImageUploader
 
+  def top_bid
+    self.bids.map(&:bid_amount).max || self.start_bid
+  end
+
   def bid_upon?(item)
     item_bids = Bid.find_all_by_item_id(item.id)
     if !item_bids.nil?
