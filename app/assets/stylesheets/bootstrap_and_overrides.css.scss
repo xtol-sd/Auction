@@ -2,6 +2,12 @@
 body { padding-top: 60px; }
 @import "bootstrap-responsive";
 
+#main{
+	.container {
+		background-color: white;
+	}
+}
+
 #subtitle{
 	margin-left:10px;
 	color:#643219;
