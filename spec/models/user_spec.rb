@@ -11,6 +11,9 @@ describe User do
     }
   end
 
+  it { should respond_to(:items)}
+  it { should respond_to(:bids)}
+
   it "should create a new instance given a valid attribute" do
     User.create!(@attr)
   end
