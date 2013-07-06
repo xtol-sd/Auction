@@ -1,7 +1,0 @@
-<%= simple_form_for(@bid) do |f| %>
-  <%= f.error_notification %>
-  <%= f.hidden_field :user_id, :value => current_user.id %>
-  <%= f.hidden_field :item_id, :value => params[:id]  %>
-   <%= f.input :bid_amount, input_html: { value:  number_with_precision(@item.top_bid + 5, :precision => 2) }  %>
-  <%= f.button :submit, 'Place Bid', :confirm => "Bids cannot be retracted. Are you sure?", :class => "btn btn-small btn-primary" %>
-<% end %>
