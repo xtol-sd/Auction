@@ -33,15 +33,8 @@
         <i><font color="gray">Start Bid:</br><%= number_to_currency(item.start_bid, :unit => "$") %></font></i>
       <% end %>
         <% if @event.end_datetime >= DateTime.now && current_user %>
-              <%= simple_form_for(@bid) do |f| %>
-                <%= f.error_notification %>
-                <%= f.hidden_field :user_id, :value => current_user.id %>
-                <%= f.hidden_field :item_id, :value => item.id  %>
-                <%= f.input :bid_amount, label: false, 
-                input_html: { value:  number_with_precision(item.top_bid + 5, :precision => 2) }  %>
-                <%= f.button :submit, 'Increase Bid', :class => "btn btn-small btn-primary", :confirm => "Bids cannot be retracted. Are you sure?" %>
-              <% end %>
-        <% else %>
+          <%= render 'shared/bid_form', :item => item %>
+         <% else %>
             
         <% end %>  
     

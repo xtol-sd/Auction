@@ -1,6 +1,5 @@
 <%= simple_form_for(@bid) do |f| %>
   <%= f.error_notification %>
-    <%= f.hidden_field :user_id, :value => current_user.id %>
     <%= f.hidden_field :item_id, :value => @bid.item.id %>
     <%= f.input :bid_amount, input_html: { min: @item.top_bid + 1 } %>
     <%= f.button :submit %>
