@@ -1,60 +1,57 @@
 <h1> My Bids </h1>
-<% if @bids.blank? %>
+
+<% if @my_bids.blank? %>
   <i><%= "You have not yet bid on any items." %></br>
-    <%= "Please go to " %>
-    <%= link_to "Auction Items", event_path(Event.find_by_current(true)) %>
-    <%= " to see items up for bid" %></i>
+     <%= "Please go to " %>
+     <%= link_to "Auction Items", event_path(Event.find_by_current(true)) %>
+     <%= " to see items up for bid" %></i>
 <% else %>  
-<% @items.each do |item| %>
-<% bidcheck = 0 %>
-  <% @bids.each do |bid| %>
-    <% if bidcheck == 0 %>
-        <% if bid.item_id == item.id  %>
-          <%= item.title %>
-          <div class="row">
-            <div class="span9"><%= image_tag(item.image_url, :height => 50) %></div>
-            <div class="span3">
-              <% if !event_over?(item.event) %>
-                <i>Current bid:</i>
-              <% else %>
-                <i>Final bid:</i>
-              <% end %>  
-              <% if !item.bids.nil? %>
-                <%= number_to_currency(item.highest_bid(item.start_bid), :unit => "$") %>
-              <% else %>
-                <%= number_to_currency(item.start_bid, :unit => "$") %>
-              <% end %></br>
-              <b>My bid:</b>
-              <%= number_to_currency(item.my_highest_bid(current_user, item.id, item.start_bid), :unit => "$") %>
-              <% bidcheck = 1 %>
-              <% if !event_over?(item.event) %>
-                <% if item.my_highest_bid(current_user, item.id, item.start_bid) == item.highest_bid(item.start_bid) %>
-                  <p><span class="label label-success"> Current Top Bidder <i class="icon-thumbs-up"></i> </span></p>
-                  
-                <% else %>
-                  <p class = "text-error"> Not Top Bidder <i class="icon-thumbs-down"></i> </p>
+  <% @my_bid_items.each do |item| %>
+    <%= item.title %>
+    <div class="row">
+      <div class="span9"><%= image_tag(item.image_url, :height => 50) %></div>
+      <div class="span3"> 
+        <% if !event_over?(item.event) %>
+          <i>Current bid:</i>
+        <% else %>
+          <i>Final bid:</i>
+        <% end %> 
 
-                  <%= simple_form_for(@bid) do |f| %>
-                    <%= f.error_notification %>
+        <% if !item.bids.nil? %>
+          <%= number_to_currency(item.highest_bid(item.start_bid), :unit => "$") %>
+        <% else %>
+          <%= number_to_currency(item.start_bid, :unit => "$") %>
+        <% end %></br>
+        
+        <b>My bid:</b>
+        <%= number_to_currency(item.my_highest_bid(current_user, item.id, item.start_bid), :unit => "$") %>
+           
+        <% if !event_over?(item.event) %>
+          <% if item.my_highest_bid(current_user, item.id, item.start_bid) == item.highest_bid(item.start_bid) %>
+            <p><span class="label label-success"> Current Top Bidder <i class="icon-thumbs-up"></i> </span></p> 
+          <% else %>
+            <p class = "text-error"> Not Top Bidder <i class="icon-thumbs-down"></i> </p>
+              
+            <%= simple_form_for(@bid) do |f| %>
+              <%= f.error_notification %>
 
-                    <%= f.hidden_field :user_id, :value => current_user.id %>
-                    <%= f.hidden_field :item_id, :value => item.id  %>
-                    <%= f.input :bid_amount, label: false %>
+              <%= f.hidden_field :user_id, :value => current_user.id %>
+              <%= f.hidden_field :item_id, :value => item.id  %>
+              <%= f.input :bid_amount, label: false %>
 
-                    <%= f.button :submit, 'Increase Bid', :class => "btn btn-small btn-primary", :confirm => "Bids cannot be retracted. Are you sure?" %>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </div>
-            <div class="span3">
-              <% if item.current_user_won?(current_user) %>
-                </br><span class="label label-success">You won!</span>
-              <% end %>
-            </div>
-          </div>
-          <hr />
+              <%= f.button :submit, 'Increase Bid', :class => "btn btn-small btn-primary", :confirm => "Bids cannot be retracted. Are you sure?" %>
+            <% end %>
+          <% end %>
         <% end %>
-      <% end %>
-    <% end %>
-  <% end %>
+      </div>
+
+      <div class="span3">
+        <% if item.current_user_won?(current_user) %>
+          </br><span class="label label-success">You won!</span>
+        <% end %>
+      </div>
+
+    </div>
+    <hr> 
+  <% end %>                                     
 <% end %>

@@ -3,7 +3,11 @@ class Item < ActiveRecord::Base
   
   belongs_to :event
   belongs_to :user
+  
   has_many :bids
+  has_many :bidding_users, :through => :bids, :source => :user
+
+  belongs_to :donation
   
   accepts_nested_attributes_for :bids
   accepts_nested_attributes_for :user
