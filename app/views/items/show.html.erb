@@ -13,16 +13,25 @@
 </p>
 
 <p>
-  <b>Current bid:</b>
-
-<% if @item.bids %>
-      <td><%= number_to_currency(@item.highest_bid(@item.start_bid), :unit => "$") %></td>
-    <% else %>
-      <td><%= number_to_currency(@item.start_bid, :unit => "$") %></td>
-    <% end %>
-</p>
 
 
-<% if @event.end_datetime > DateTime.now %>
-<%= render "/shared/bid_form", :item => @item %>
+<% if @item.no_bids?(@item) %>
+  <b>Start bid: </b><%= number_to_currency(@item.start_bid, :unit => "$") %>
+    <%= simple_form_for(@bid) do |f| %>
+        <%= f.error_notification %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <%= f.hidden_field :item_id, :value => @item.id  %>
+        <%= f.input :bid_amount, label: false, 
+        input_html: { value:  number_with_precision(@item.top_bid, :precision => 2) }  %>
+        <%= f.button :submit, 'Place Bid', :confirm => "Bids cannot be retracted. Are you sure?" %>
+	<% end %>
 <% end %>
+<% if !@item.no_bids?(@item) %>
+  <b>Current bid:</b>
+      <td><%= number_to_currency(@item.highest_bid(@item.start_bid), :unit => "$") %></td>
+	    <% if @event.end_datetime > DateTime.now %>
+      <%= render "/shared/bid_form", :item => @item %>
+		<% end %>
+<% else %>
+<% end %>
+</p>

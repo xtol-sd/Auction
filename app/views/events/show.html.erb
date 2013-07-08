@@ -29,16 +29,24 @@
           <% end %>
         <% end %>
       <% end %>
+
       <% if item.no_bids?(item) %>
         <i><font color="gray">Start Bid:</br><%= number_to_currency(item.start_bid, :unit => "$") %></font></i>
-      <% end %>
         <% if @event.end_datetime >= DateTime.now && current_user %>
           <%= render 'shared/bid_form', :item => item %>
-         <% else %>
-            
-        <% end %>  
-    
+        <% end %>
+      <% else %>
+        <% if @event.end_datetime >= DateTime.now && current_user %>
+
+          <% if item.my_highest_bid(current_user, item.id, item.start_bid) == item.highest_bid(item.start_bid) %>
+            <p><span class="label label-success"> Current Top Bidder <i class="icon-thumbs-up"></i> </span></p>
+          <% else %>
+            <%= render 'shared/bid_form', :item => item %>
+          <% end %>    
+        <% end %>
+      <% end %>
     </div>
     <hr />
 
 <% end %>
+
