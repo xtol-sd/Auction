@@ -55,7 +55,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
+        format.html { redirect_to root_url, notice: 'Item was successfully donated.' }
         format.json { render json: @item, status: :created, location: @item }
       else
         format.html { render action: "new" }

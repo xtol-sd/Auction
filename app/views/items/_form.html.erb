@@ -1,7 +1,6 @@
 <%= simple_form_for ([@event, @item]) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
     <%= f.fields_for :user do |builder| %>
       <%= builder.hidden_field :user_id, :value => @user.id %>
     <% end %>
@@ -9,11 +8,6 @@
     <%= f.input :title %>
     <%= f.input :description %>
     <%= f.input :start_bid %>
-  </div>
 
-
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+    <%= f.button :submit, 'Donate Item' %>
 <% end %>
