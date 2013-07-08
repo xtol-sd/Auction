@@ -33,7 +33,8 @@ class ItemsController < ApplicationController
   # GET /items/new
   # GET /items/new.json
   def new
-    @item = Item.new
+    @event = Event.find_by_current(true)
+    @item = @event.items.build
     @user = User.find(current_user)
 
     respond_to do |format|

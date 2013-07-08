@@ -8,6 +8,8 @@
     </li>
     <li> <%= link_to 'My Bids', _my_bids_path %>
     </li>
+    <li> <%= link_to 'Donate', new_event_item_path(Event.find_by_current(true)) %>
+    </li>
   </ul>
 
   <ul class="nav pull-right">
