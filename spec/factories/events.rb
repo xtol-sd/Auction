@@ -2,9 +2,8 @@
 
 FactoryGirl.define do
   factory :event do
-    name "Event Name"
+    name "MyString"
     start_datetime "2013-07-02 23:16:47"
-    end_datetime "2013-09-02 23:16:47"
-    current true
+    end_datetime "2013-07-02 23:16:47"
   end
 end
