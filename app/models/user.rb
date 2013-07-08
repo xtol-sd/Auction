@@ -12,6 +12,6 @@ class User < ActiveRecord::Base
   attr_accessible :address, :city, :state, :zip, :phone
   
   has_many :items
-  has_many :bids
+  has_many :bids, dependent: :destroy
 
 end
