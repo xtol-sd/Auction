@@ -1,0 +1,13 @@
+<%= simple_form_for(@bid) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.hidden_field :user_id, :value => @user.id %>
+    <%= f.input :item_id %>
+    <%= f.input :bid_amount %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
