@@ -22,6 +22,7 @@
     <% end %>
 </p>
 
+
 <% if @event.end_datetime > DateTime.now %>
-<%= render "/shared/item_show_bid_form" %>
+<%= render "/shared/bid_form", :item => @item %>
 <% end %>
