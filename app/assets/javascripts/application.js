@@ -16,6 +16,7 @@
 //= require flat-ui.js
 //= require rails.validations
 //= require rails.validations.simple_form
+//= require_tree .
 
 // The following function is called once the rest of the document is fully loaded
 
