@@ -20,7 +20,7 @@
     <%= link_to item.title, event_item_path(@event, item) %>
     <div class="row">
       <div class="span9"><%= link_to image_tag(item.image_url, :height => 50), event_item_path(@event, item) %></div>
-      <% if item.bid_upon?(item) %>
+      <% if item.bid_upon?(item) && @event.end_datetime >= DateTime.now %>
       <% bidcheck = 0 %>
         <% item.bids.each do |bid| %>   
           <% if bidcheck == 0 %>       
@@ -57,11 +57,29 @@
                 input_html: { value:  number_with_precision(item.top_bid + 5, :precision => 2) }  %>
                 <%= f.button :submit, 'Increase Bid', :class => "btn btn-small btn-primary", :confirm => "Bids cannot be retracted. Are you sure you want to bid  ?" %>
               <% end %>
-          <% end %>    
-        <% end %>
+          <% end %>
+        <% elsif @event.end_datetime <= DateTime.now && current_user %>
+            <% if item.my_highest_bid(current_user, item.id, item.start_bid) == item.highest_bid(item.start_bid) %>
+              <% bidcheck = 0 %>
+              <% item.bids.each do |bid| %>   
+                <% if bidcheck == 0 %>       
+                  <font color="gray"><i>Final Bid:</i></font></br><%= number_to_currency(item.highest_bid(bid.bid_amount), :unit => "$") %>
+                  <% bidcheck = 1 %>
+                <% end %>
+              <% end %>
+              <p><span class="label label-success"> You won! <i class="icon-thumbs-up"></i> </span></p>
+            <% else %>
+              <% bidcheck = 0 %>
+                <% item.bids.each do |bid| %>   
+                  <% if bidcheck == 0 %>       
+                    <font color="gray"><i>Final Bid:</i></font></br><%= number_to_currency(item.highest_bid(bid.bid_amount), :unit => "$") %>
+                    <% bidcheck = 1 %>
+                  <% end %>
+                <% end %>
+            <% end %>
+        <% end %>    
       <% end %>
     </div>
     <hr />
 
 <% end %>
-
