@@ -7,10 +7,6 @@ Auction::Application.routes.draw do
 
   resources :bids
 
-
-  authenticated :user do
-    root :to => 'events#my_bids'
-  end
   root :to => "events#show"
   devise_for :users
   resources :users
