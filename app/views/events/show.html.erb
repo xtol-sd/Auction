@@ -35,13 +35,7 @@
         <% if @event.end_datetime >= DateTime.now %>
           <i><font color="gray">Start Bid:</br><%= number_to_currency(item.start_bid, :unit => "$") %></font></i>
           <% if @event.end_datetime >= DateTime.now && current_user %>
-            <%= simple_form_for(@bid) do |f| %>
-              <%= f.error_notification %>
-              <%= f.hidden_field :user_id, :value => current_user.id %>
-              <%= f.hidden_field :item_id, :value => item.id  %>
-              <%= f.input :bid_amount, label: false, input_html: { value:  number_with_precision(item.top_bid, :precision => 2) }  %>
-              <%= f.button :submit, 'Bid', :confirm => "Bids cannot be retracted. Are you sure?", :class => "btn btn-small btn-primary" %>
-            <% end %>
+            <%= render "/shared/bid_form", :item => item %>
           <% end %>
         <% else %>
           <i><font color="gray">This item was not sold</font></i> 
@@ -51,13 +45,7 @@
           <% if item.my_highest_bid(current_user, item.id, item.start_bid) == item.highest_bid(item.start_bid) %>
             <p><span class="label label-success"> Current Top Bidder <i class="icon-thumbs-up"></i> </span></p>
           <% else %>
-            <%= simple_form_for(@bid) do |f| %>
-              <%= f.error_notification %>
-              <%= f.hidden_field :user_id, :value => current_user.id %>
-              <%= f.hidden_field :item_id, :value => item.id  %>
-              <%= f.input :bid_amount, label: false, input_html: { value:  number_with_precision(item.top_bid + 5, :precision => 2) }  %>
-              <%= f.button :submit, 'Bid', :class => "btn btn-small btn-primary", :confirm => "Bids cannot be retracted. Are you sure you want to bid  ?" %>
-            <% end %>
+            <%= render "/shared/bid_form", :item => item %>
           <% end %>
         <% elsif @event.end_datetime <= DateTime.now && current_user %>
           <% if item.my_highest_bid(current_user, item.id, item.start_bid) == item.highest_bid(item.start_bid) %>
