@@ -1,46 +1,44 @@
-<p> 
-<%= image_tag(@item.image_url, :height => 50) %>
-</p>
+<h1>
+  <%= @event.name %>
+</h1>  
 
-<p>
-  <b>Item Name:</b>
-  <%= @item.title %>
-</p>
+<div id="countDownTimer" class="span4 "></div> 
+<script> 
+  var year = <%= @event.end_datetime.strftime("%Y") %>; 
+  var month = <%= @event.end_datetime.strftime("%-m") %>; 
+  var day = <%= @event.end_datetime.strftime("%-d") %>; 
+  var eventEndDate = new Date(); 
+  eventEndDate = new Date(year, month - 1, day); 
+  $('#countDownTimer').countdown({until: eventEndDate}); 
+</script>
+<p> This auction will end on: <%= @event.end_datetime.strftime("%B %d, %Y") %></p>
+</br>
+    <h4><%= @item.title.capitalize %></h4>
+    <div class="row">
+      <div class="span9"><%= image_tag(@item.image_url, :height => 50) %></div>
+        <div class="span3">
+          <% if @item.no_bids?(@item) %>
+            <b>Start bid: </b><%= number_to_currency(@item.start_bid, :unit => "$") %>
+              <%= simple_form_for(@bid) do |f| %>
+                  <%= f.error_notification %>
+                  <%= f.hidden_field :user_id, :value => current_user.id %>
+                  <%= f.hidden_field :item_id, :value => @item.id  %>
+                  <%= f.input :bid_amount, :label => false, input_html: { value:  number_with_precision(@item.top_bid, :precision => 2) }  %>
+                  <%= f.button :submit, 'Bid', :confirm => "Bids cannot be retracted. Are you sure?", :class => "btn btn-small btn-primary" %>
+            <% end %>
+          <% end %>
+          <% if !@item.no_bids?(@item) %>
+            <b>Current bid:</b>
+                <td><%= number_to_currency(@item.highest_bid(@item.start_bid), :unit => "$") %></td>
+                <% if @event.end_datetime > DateTime.now %>
+                <%= render "/shared/item_show_bid_form" %>
+              <% end %>
+          <% else %>
+          <% end %>
+        </div>
+      </div>
+      <%= @item.description %>
+    <hr />
+  <%= link_to 'Back to Auction Items List', root_url %>
 
-<p>
-  <b>Description:</b>
-  <%= @item.description %>
-</p>
-
-<p>
-
-
-<% if @item.no_bids?(@item) %>
-  <b>Start bid: </b><%= number_to_currency(@item.start_bid, :unit => "$") %>
-    <%= simple_form_for(@bid) do |f| %>
-        <%= f.error_notification %>
-        <%= f.hidden_field :user_id, :value => current_user.id %>
-        <%= f.hidden_field :item_id, :value => @item.id  %>
-        <%= f.input :bid_amount, label: false, 
-        input_html: { value:  number_with_precision(@item.top_bid, :precision => 2) }  %>
-        <%= f.button :submit, 'Bid', :confirm => "Bids cannot be retracted. Are you sure?", :class => "btn btn-small btn-primary" %>
-	<% end %>
-<% end %>
-<% if !@item.no_bids?(@item) %>
-  <b>Current bid:</b>
-      <td><%= number_to_currency(@item.highest_bid(@item.start_bid), :unit => "$") %></td>
-	    <% if @event.end_datetime > DateTime.now %>
-			<%= render "/shared/item_show_bid_form" %>
-		<% end %>
-<% else %>
-<% end %>
-
-
-
-
-</p>
-
-
-
-
-
+  </div>
