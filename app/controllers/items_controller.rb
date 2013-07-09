@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
      @items = Item.all
      @bids = Bid.find_all_by_user_id(current_user)
      @bid = Bid.new
+     @event = Event.find_by_current(true)
   end
 
   def my_donations

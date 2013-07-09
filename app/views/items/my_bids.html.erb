@@ -1,4 +1,20 @@
+
+<%= link_to("End Auction", edit_event_path(@event), :class => 'btn btn-mini btn-danger offset10') %>
+
 <h1> My Bids </h1>
+
+<div id="countDownTimer" class="span4 "></div> 
+<script> 
+  var year = <%= @event.end_datetime.strftime("%Y") %>; 
+  var month = <%= @event.end_datetime.strftime("%-m") %>; 
+  var day = <%= @event.end_datetime.strftime("%-d") %>; 
+  var eventEndDate = new Date(); 
+  eventEndDate = new Date(year, month - 1, day); 
+  $('#countDownTimer').countdown({until: eventEndDate}); 
+</script>
+<p> This auction will end on: <%= @event.end_datetime.strftime("%B %d, %Y") %></p>
+
+
 <% if @bids.blank? %>
   <i><%= "You have not yet bid on any items." %></br>
     <%= "Please go to " %>
