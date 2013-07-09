@@ -39,6 +39,9 @@ group :development, :test do
   gem 'sqlite3'
   gem 'factory_girl_rails'
   gem 'rspec-rails'
+  gem 'guard-spork'
+  gem 'childprocess'
+  gem 'spork'
 end
 
 group :test do
