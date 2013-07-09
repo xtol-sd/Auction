@@ -543,6 +543,10 @@ h6 {
 }
 .btn.btn-primary {
   background-color: #5697b9;
+  float: right;
+  margin-top:-50px;
+  position: relative;
+  left: -145px;
 }
 .btn.btn-primary:hover,
 .btn.btn-primary:focus,
@@ -1647,7 +1651,7 @@ textarea[readonly] {
 input,
 textarea,
 .uneditable-input {
-  width: 192px;
+  width: 60px;
 }
 textarea {
   height: auto;

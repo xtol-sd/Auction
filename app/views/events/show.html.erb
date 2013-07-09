@@ -20,6 +20,7 @@
     <%= link_to item.title, event_item_path(@event, item) %>
     <div class="row">
       <div class="span9"><%= link_to image_tag(item.image_url, :height => 50), event_item_path(@event, item) %></div>
+      <div class="span3">
       <% if item.bid_upon?(item) && @event.end_datetime >= DateTime.now %>
         <% bidcheck = 0 %>
         <% item.bids.each do |bid| %>   
@@ -82,6 +83,7 @@
         <% end %>    
       <% end %>
     </div>
+  </div>
     <hr />
 
 <% end %>
