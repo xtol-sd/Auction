@@ -6,7 +6,6 @@
   </i>
   <% else %>
 <% @items.each do |item| %>
-  <% donatecheck = 0 %>
   <% @donations.each do |donation| %>
      <% if donation.item_id == item.id %>
            <%= item.title %>
@@ -14,7 +13,11 @@
             <div class="span9"><%= image_tag(item.image_url, :height => 50) %></div>
             <div class="span3">
               <% if !event_over?(item.event) %>
-                <i>Current bid:</i>
+                <% if item.bids.empty? %>
+                  <i>Start bid:</i>
+                <% else %>
+                  <i>Current bid:</i>
+                <% end %>
               <% else %>
                 <i>Final bid:</i>
               <% end %>  
@@ -23,7 +26,6 @@
               <% else %>
                 <%= number_to_currency(item.start_bid, :unit => "$") %>
               <% end %></br>
-              <% donatecheck = 1 %>
             </div>
           </div>
           <hr />
