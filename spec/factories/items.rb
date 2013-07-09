@@ -2,9 +2,10 @@
 
 FactoryGirl.define do
   factory :item do
-    user_id 1
-    title "MyString"
-    description "MyString"
-    start_bid 1
+    title "Antique vase"
+    description "Antique-look porcelain vase with mottled 
+        copper finish, rose design. Footed metal base. 11inch diameter x 15inch high."
+    start_bid 125
+    event_id 1
   end
 end
