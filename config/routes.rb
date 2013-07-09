@@ -15,4 +15,5 @@ Auction::Application.routes.draw do
   devise_for :users
   resources :users
   get "my_bids" => "items#my_bids", :as => "_my_bids"
+  get "my_donations" => "items#my_donations", :as => "_my_donations"
 end

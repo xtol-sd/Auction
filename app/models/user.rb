@@ -13,5 +13,6 @@ class User < ActiveRecord::Base
   
   has_many :items
   has_many :bids
+  has_many :donations
 
 end

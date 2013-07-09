@@ -1,12 +1,14 @@
 class Item < ActiveRecord::Base
-  attr_accessible :description, :start_bid, :title, :image, :user_attributes, :event_id
+  attr_accessible :description, :start_bid, :title, :image, :user_attributes, :event_id, :donation_attributes
   
   belongs_to :event
   belongs_to :user
   has_many :bids
+  has_one :donation
   
   accepts_nested_attributes_for :bids
   accepts_nested_attributes_for :user
+  accepts_nested_attributes_for :donation
   mount_uploader :image, ImageUploader
 
   def top_bid

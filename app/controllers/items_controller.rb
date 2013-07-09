@@ -7,6 +7,12 @@ class ItemsController < ApplicationController
      @bids = Bid.find_all_by_user_id(current_user)
      @bid = Bid.new
   end
+
+  def my_donations
+     @items = Item.all
+     @donations = Donation.find_all_by_user_id(current_user)
+  
+  end
   # GET /items
   # GET /items.json
   def index
@@ -36,6 +42,9 @@ class ItemsController < ApplicationController
     @event = Event.find_by_current(true)
     @item = @event.items.build
     @user = User.find(current_user)
+   
+    @donation = @item.build_donation
+     
 
     respond_to do |format|
       format.html # new.html.erb
@@ -51,7 +60,9 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
-    @item = Item.new(params[:item])
+    @event = Event.find(params[:event_id])
+    @item = @event.items.build(params[:item])
+    #@item = Item.new(params[:item])
 
     respond_to do |format|
       if @item.save

@@ -1,0 +1,34 @@
+<h1> My Items </h1>
+<% if @donations.blank? %>
+  <i><%= "You have not made any donations." %></br>
+    <%= "Please go to " %>
+    <%= link_to "Donate Items", new_event_item_path(Event.find_by_current(true)) %>
+  </i>
+  <% else %>
+<% @items.each do |item| %>
+  <% donatecheck = 0 %>
+  <% @donations.each do |donation| %>
+     <% if donation.item_id == item.id %>
+           <%= item.title %>
+          <div class="row">
+            <div class="span9"><%= image_tag(item.image_url, :height => 50) %></div>
+            <div class="span3">
+              <% if !event_over?(item.event) %>
+                <i>Current bid:</i>
+              <% else %>
+                <i>Final bid:</i>
+              <% end %>  
+              <% if !item.bids.nil? %>
+                <%= number_to_currency(item.highest_bid(item.start_bid), :unit => "$") %>
+              <% else %>
+                <%= number_to_currency(item.start_bid, :unit => "$") %>
+              <% end %></br>
+              <% donatecheck = 1 %>
+            </div>
+          </div>
+          <hr />
+        
+     <% end %>
+    <% end %>
+  <% end %>
+<% end %>
