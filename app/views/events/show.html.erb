@@ -39,7 +39,7 @@
                 <%= f.hidden_field :item_id, :value => item.id  %>
                 <%= f.input :bid_amount, label: false, 
                 input_html: { value:  number_with_precision(item.top_bid, :precision => 2) }  %>
-                <%= f.button :submit, 'Place Bid', :confirm => "Bids cannot be retracted. Are you sure?" %>
+                <%= f.button :submit, 'Bid', :confirm => "Bids cannot be retracted. Are you sure?", :class => "btn btn-small btn-primary" %>
               <% end %>
         <% end %>
       <% else %>
@@ -55,7 +55,7 @@
                 <%= f.hidden_field :item_id, :value => item.id  %>
                 <%= f.input :bid_amount, label: false, 
                 input_html: { value:  number_with_precision(item.top_bid + 5, :precision => 2) }  %>
-                <%= f.button :submit, 'Increase Bid', :class => "btn btn-small btn-primary", :confirm => "Bids cannot be retracted. Are you sure you want to bid  ?" %>
+                <%= f.button :submit, 'Bid', :class => "btn btn-small btn-primary", :confirm => "Bids cannot be retracted. Are you sure you want to bid  ?" %>
               <% end %>
           <% end %>
         <% elsif @event.end_datetime <= DateTime.now && current_user %>

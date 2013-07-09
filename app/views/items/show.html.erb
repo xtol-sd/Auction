@@ -23,7 +23,7 @@
         <%= f.hidden_field :item_id, :value => @item.id  %>
         <%= f.input :bid_amount, label: false, 
         input_html: { value:  number_with_precision(@item.top_bid, :precision => 2) }  %>
-        <%= f.button :submit, 'Place Bid', :confirm => "Bids cannot be retracted. Are you sure?" %>
+        <%= f.button :submit, 'Bid', :confirm => "Bids cannot be retracted. Are you sure?", :class => "btn btn-small btn-primary" %>
 	<% end %>
 <% end %>
 <% if !@item.no_bids?(@item) %>
