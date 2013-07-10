@@ -11,7 +11,20 @@ class Item < ActiveRecord::Base
   accepts_nested_attributes_for :donation
   mount_uploader :image, ImageUploader
 
+  def top_bid_me?(current_user_id) 
+    if !top_bid
+      false
+    else
+      top_bid.user_id == current_user_id
+    end 
+  end
+
   def top_bid
+    bids(:bid_amount).max
+    #self.bids.map(&:bid_amount).max || self.start_bid
+  end
+
+  def top_bid_amount
     self.bids.map(&:bid_amount).max || self.start_bid
   end
 

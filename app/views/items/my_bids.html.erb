@@ -39,13 +39,7 @@
                 <p><span class="label label-success"> Current Top Bidder <i class="icon-thumbs-up"></i> </span></p>
               <% else %>
                 <p class = "text-error"> Not Top Bidder <i class="icon-thumbs-down"></i> </p>
-                <%= simple_form_for(@bid) do |f| %>
-                  <%= f.error_notification %>
-                  <%= f.hidden_field :user_id, :value => current_user.id %>
-                  <%= f.hidden_field :item_id, :value => item.id  %>
-                  <%= f.input :bid_amount, label: false, input_html: { value:  number_with_precision(item.top_bid + 5, :precision => 2) }  %>
-                  <%= f.button :submit, 'Bid', :class => "btn btn-small btn-primary", :confirm => "Bids cannot be retracted. Are you sure?" %>
-                <% end %>
+                <%= render 'shared/bid_form', :item => item %>
               <% end %>       
             <% else %>
               <i>Final bid:</i><%= number_to_currency(item.highest_bid(item.start_bid), :unit => "$") %>

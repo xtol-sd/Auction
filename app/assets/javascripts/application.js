@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require_tree 
+//= require_tree .
 //= require flat-ui.js
 
 // The following function is called once the rest of the document is fully loaded

@@ -17,6 +17,7 @@ gem 'figaro'
 gem 'rolify'
 gem 'simple_form'
 gem "faker"
+gem "bcrypt-ruby", '~> 3.0.0'
 
 group :production do
   gem 'pg'
@@ -24,7 +25,7 @@ end
 
 group :development do
   gem 'better_errors'
-  gem 'binding_of_caller', :platforms=>[:mri_19, :rbx]
+  gem 'binding_of_caller'
   gem 'guard-bundler'
   gem 'guard-rails'
   gem 'guard-rspec'
@@ -39,6 +40,9 @@ group :development, :test do
   gem 'sqlite3'
   gem 'factory_girl_rails'
   gem 'rspec-rails'
+  gem 'guard-spork'
+  gem 'childprocess'
+  gem 'spork'
 end
 
 group :test do
