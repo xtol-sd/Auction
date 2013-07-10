@@ -8,7 +8,7 @@ class Bid < ActiveRecord::Base
   validates_presence_of :bid_amount, :item_id, :user_id
 
   def top_bid
-    item.bids.map(&:bid_amount).max || item.start_bid
+    item.bids.map(&:bid_amount).max || item.start_bid - 0.01
   end
 
 end
