@@ -25,11 +25,11 @@ String.prototype.repeat = function(num) {
     // Custom Select
     $("select[name='herolist']").selectpicker({style: 'btn-primary', menuStyle: 'dropdown-inverse'});
 
-    // Tooltips
-    $("[data-toggle=tooltip]").tooltip("show");
+    // // Tooltips
+    // $("[data-toggle=tooltip]").tooltip("show");
 
-    // Tags Input
-    $(".tagsinput").tagsInput();
+    // // Tags Input
+    // $(".tagsinput").tagsInput();
 
     // jQuery UI Sliders
     var $slider = $("#slider");
@@ -43,8 +43,8 @@ String.prototype.repeat = function(num) {
       }).addSliderSegments($slider.slider("option").max);
     }
 
-    // Placeholders for input/textarea
-    $("input, textarea").placeholder();
+    // // Placeholders for input/textarea
+    // $("input, textarea").placeholder();
 
     // Make pagination demo work
     $(".pagination a").on('click', function() {
@@ -60,8 +60,8 @@ String.prototype.repeat = function(num) {
       e.preventDefault();
     });
 
-    // Switch
-    $("[data-toggle='switch']").wrap('<div class="switch" />').parent().bootstrapSwitch();
+    // // Switch
+    // $("[data-toggle='switch']").wrap('<div class="switch" />').parent().bootstrapSwitch();
     
   });
   
