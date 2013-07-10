@@ -17,6 +17,7 @@ gem 'figaro'
 gem 'rolify'
 gem 'simple_form'
 gem "faker"
+gem "bcrypt-ruby", '~> 3.0.0'
 
 group :production do
   gem 'pg'
