@@ -15,23 +15,8 @@
 </br>
     <h4><%= @item.title.capitalize %></h4>
     <div class="row">
-      <div class="span9"><%= image_tag(@item.image_url, :height => 50) %></div>
-        <div class="span3">
-          <% if @item.no_bids?(@item) %>
-            <b>Start bid: </b><%= number_to_currency(@item.start_bid, :unit => "$") %>
-              <%= render "/shared/bid_form", :item => @item %>
-          <% end %>
-          <% if !@item.no_bids?(@item) %>
-            <b>Current bid:</b>
-                <td><%= number_to_currency(@item.highest_bid(@item.start_bid), :unit => "$") %></td>
-                <% if @event.end_datetime > DateTime.now %>
-                <%= render "/shared/bid_form", :item => @item %>
-              <% end %>
-          <% else %>
-          <% end %>
-        </div>
-      </div>
-      <%= @item.description %>
+    <%= render "/shared/item_bid_information", :item => @item %>      
+    <%= @item.description %>
     <hr />
   <%= link_to 'Back to Auction Items List', root_url %>
 
