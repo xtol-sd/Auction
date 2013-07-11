@@ -11,6 +11,8 @@ class Item < ActiveRecord::Base
   accepts_nested_attributes_for :donation
   mount_uploader :image, ImageUploader
 
+  validates_presence_of :title, :description, :start_bid
+
   def next_allowed_bid
     # if then statement abbreviation
     offset = !bids.empty? ? 5:0
