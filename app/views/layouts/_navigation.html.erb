@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
   <nav>
-    <ul class="nav nav-tabs">
+    <ul class="nav">
       <li><%= image_tag "nccarf_logo.gif" %></li>
       <%= nav_link 'Auction Items', event_path(Event.find_by_current(true)) %>
       <%= nav_link 'My Bids', _my_bids_path %>
