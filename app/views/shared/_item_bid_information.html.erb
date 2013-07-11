@@ -2,22 +2,23 @@
   <%= link_to image_tag(item.image_url, :height => 50), event_item_path(@event, item) %>
 </div>
 <div class="span3">
-  <div class = "bid_amount">
-  	<%= number_to_currency(item.top_bid_amount || item.start_bid, :unit => "$") %>
-  </div>
-  <small> <%= pluralize(item.bids.count, 'Bid') %> </small> 
   
   <% if @event.finished?%>  
     <% if item.bids.empty? %>
        <i><font color="gray">This item was not sold</font></i> 
     <% else %> 
-      <font color="gray"><i>Final Bid:</i></font></br><%= number_to_currency(item.top_bid_amount, :unit => "$") %>
+      <font color="gray"><i>Final Bid:</i></font></br>$<%= number_with_precision(item.top_bid_amount, :precision => 0) %>
       <% if item.top_bid_me?(current_user.id) && current_user %>
         <p><span class="label label-success"> You won! <i class="icon-thumbs-up"></i> </span></p>
       <% end %>              
     <% end %>
 
   <% elsif current_user %>
+    <div class = "bid_amount">
+      $<%= number_with_precision(item.top_bid_amount || item.start_bid, :precision => 0) %>
+    </div>
+    <small> <%= pluralize(item.bids.count, 'Bid') %> </small> 
+
     <% if item.top_bid_me?(current_user.id) %>
       <p><span class="label label-success"> Current Top Bidder <i class="icon-thumbs-up"></i> </span></p>
     <% end %>
