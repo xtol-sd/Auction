@@ -11,6 +11,12 @@ class Item < ActiveRecord::Base
   accepts_nested_attributes_for :donation
   mount_uploader :image, ImageUploader
 
+  def next_allowed_bid
+    # if then statement abbreviation
+    offset = bids ? 5 : 0
+    top_bid_amount + offset
+  end
+
   def top_bid_me?(current_user_id) 
     if !top_bid
       false

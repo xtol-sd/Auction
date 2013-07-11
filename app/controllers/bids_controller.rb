@@ -34,6 +34,7 @@ class BidsController < ApplicationController
 
   def create
     @bid = Bid.new(params[:bid])
+    @bid.bid_amount = @bid.bid_amount.round
     @bid.user_id = current_user.id if current_user
     if @bid.save
       redirect_to _my_bids_path, notice: 'Bid was successfully created.'
