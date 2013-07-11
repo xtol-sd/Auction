@@ -1,8 +1,8 @@
-<h1> My Items </h1>
+<h1> My Donations </h1>
 <% if @donations.blank? %>
   <i><%= "You have not made any donations." %></br>
     <%= "Please go to " %>
-    <%= link_to "Donate Items", new_event_item_path(Event.find_by_current(true)) %>
+    <%= link_to "Donate Item", new_event_item_path(Event.find_by_current(true)) %>
   </i>
   <% else %>
 <% @items.each do |item| %>
