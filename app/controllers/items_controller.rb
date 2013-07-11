@@ -1,7 +1,6 @@
 class ItemsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index]
 
-
   def my_bids
      @items = Item.all
      @bids = Bid.find_all_by_user_id(current_user)
@@ -61,6 +60,7 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
+    @user = User.find(current_user)
     @event = Event.find(params[:event_id])
     @item = @event.items.build(params[:item])
     #@item = Item.new(params[:item])
