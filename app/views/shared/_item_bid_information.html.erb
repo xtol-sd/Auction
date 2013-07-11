@@ -1,5 +1,5 @@
 <div class="span9">
-  <%= image_tag(item.image_url, :height => 50) %>
+  <%= link_to image_tag(item.image_url, :height => 50), event_item_path(@event, item) %>
 </div>
 <div class="span3">
   <div class = "bid_amount">
@@ -18,7 +18,7 @@
     <% end %>
 
   <% elsif current_user %>
-    <% if item.top_bid_me?(current_user.id) && current_user %>
+    <% if item.top_bid_me?(current_user.id) %>
       <p><span class="label label-success"> Current Top Bidder <i class="icon-thumbs-up"></i> </span></p>
     <% end %>
     <%= render "/shared/bid_form", :item => item %>
