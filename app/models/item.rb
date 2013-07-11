@@ -13,8 +13,8 @@ class Item < ActiveRecord::Base
 
   def next_allowed_bid
     # if then statement abbreviation
-    offset = bids ? 5 : 0
-    top_bid_amount + offset
+    offset = !bids.empty? ? 5:0
+    next_allowed_bid = top_bid_amount + offset
   end
 
   def top_bid_me?(current_user_id) 
