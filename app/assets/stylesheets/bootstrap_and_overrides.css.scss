@@ -55,6 +55,15 @@ th {
 	width: 80px;
 }
 
+// To get rid of default spinners from html5
+// type = number, b/c not rendering nicely 
+// or functioning properly in Safair
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 .form-inline{
 	float: left;
 	margin-right: 5px;
