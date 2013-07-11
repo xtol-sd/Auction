@@ -1,18 +1,13 @@
 <% if user_signed_in? %>
-  <ul class="nav">
-    <li>
-      <%= image_tag "nccarf_logo.gif" %>
-    </li>
-    <li>
-      <%= link_to 'Auction Items', event_path(Event.find_by_current(true)) %>
-    </li>
-    <li> <%= link_to 'My Bids', _my_bids_path %>
-    </li>
-    <li> <%= link_to 'Donate Item', new_event_item_path(Event.find_by_current(true)) %>
-    </li>
-    <li> <%= link_to 'My Items', _my_donations_path %>
-    </li>
-  </ul>
+  <nav>
+    <ul class="nav nav-tabs">
+      <li><%= image_tag "nccarf_logo.gif" %></li>
+      <%= nav_link 'Auction Items', event_path(Event.find_by_current(true)) %>
+      <%= nav_link 'My Bids', _my_bids_path %>
+      <%= nav_link 'Donate Item', new_event_item_path(Event.find_by_current(true)) %>
+      <%= nav_link 'My Items', _my_donations_path %>
+    </ul>
+  </nav>  
 
   <ul class="nav pull-right">
 <!--     <% if current_user.has_role? :admin %>
