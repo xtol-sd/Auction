@@ -22,3 +22,9 @@ function setCountdownTimer(element, year, month, day) {
   var date = new Date(year, month, day);
   $(element).countdown({until: date});
 }
+
+function confirmBid(btn) {
+  var item = btn.getAttr("data-item").value
+  var price = btn.form["bid_amount"].value;
+  return confirm("Are you sure you want to bid " + price + " for " +  item + " ?";
+}
