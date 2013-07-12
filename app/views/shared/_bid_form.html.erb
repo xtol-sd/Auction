@@ -7,7 +7,7 @@
 <%= simple_form_for @bid do |f| %>
   <%= f.error_notification %>
   <%= f.hidden_field :item_id, :value => item.id  %>
-  <div class="form-inline">$</div>
+  <div class="form-inline" id="dollar-sign">$</div>
   <%= f.input :bid_amount, label: false , input_html: { value: number_with_precision(item.next_allowed_bid, :precision => 0) }, wrapper_html: {class: "form-inline"}, :data => "data-item"  %>
   <%= f.button :submit, 'Bid', :confirm => "Bids cannot be retracted.  Are you sure you want to bid on the #{item.title}?", :class => "btn btn-small btn-primary bid_button inline", :id => 'right_col_input' %>
 <% end %>
