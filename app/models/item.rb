@@ -10,6 +10,8 @@ class Item < ActiveRecord::Base
   accepts_nested_attributes_for :user
   accepts_nested_attributes_for :donation
   mount_uploader :image, ImageUploader
+  default_scope order("created_at DESC")  
+
 
   validates_presence_of :title, :description, :start_bid
 
