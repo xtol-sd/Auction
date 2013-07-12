@@ -11,6 +11,7 @@ class ItemsController < ApplicationController
   def my_donations
      @items = Item.all
      @donations = Donation.find_all_by_user_id(current_user)
+     @event = Event.find_by_current(true)
   
   end
   # GET /items

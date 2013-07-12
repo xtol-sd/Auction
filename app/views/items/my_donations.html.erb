@@ -1,4 +1,16 @@
+
 <h1> My Donations </h1>
+
+<div id="countDownTimer" class="span4 "></div> 
+<script> 
+  var year = <%= @event.end_datetime.strftime("%Y") %>; 
+  var month = <%= @event.end_datetime.strftime("%-m") %>; 
+  var day = <%= @event.end_datetime.strftime("%-d") %>; 
+  var eventEndDate = new Date(); 
+  eventEndDate = new Date(year, month - 1, day); 
+  $('#countDownTimer').countdown({until: eventEndDate}); 
+</script>
+
 <% if @donations.blank? %>
   <i><%= "You have not made any donations." %></br>
     <%= "Please go to " %>

@@ -33,7 +33,7 @@
           <div class="span3">
             <% if !event_over?(item.event) %>
               <i>Current bid:</i>$<%= number_with_precision(item.highest_bid(item.start_bid), :precision => 0) %></br>
-              <b>My bid:</b><%= number_with_precision(item.my_highest_bid(current_user, item.id, item.start_bid), :precision => 0) %>
+              <b>My bid:</b>$<%= number_with_precision(item.my_highest_bid(current_user, item.id, item.start_bid), :precision => 0) %>
               <% bidcheck = 1 %>
               <% if item.my_highest_bid(current_user, item.id, item.start_bid) == item.highest_bid(item.start_bid) %>
                 <p><span class="label label-success"> Current Top Bidder <i class="icon-thumbs-up"></i> </span></p>
