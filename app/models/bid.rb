@@ -4,11 +4,11 @@ class Bid < ActiveRecord::Base
   belongs_to :item
   accepts_nested_attributes_for :user
 
-  validates :bid_amount, :numericality => {:greater_than => :next_minimum_bid}
   validates_presence_of :bid_amount, :item_id, :user_id
+  validates :bid_amount, :numericality => {:greater_than => :next_minimum_bid, :message => "Must be at least this amount" }
 
   def next_minimum_bid
-    item.bids.map(&:bid_amount).max + 4 || item.start_bid - 1
+  	!item.bids.empty? ? (item.bids.map(&:bid_amount).max + 4):(item.start_bid - 1)
   end
 
 end

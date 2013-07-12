@@ -1,28 +1,12 @@
 <% @item = @bid.item %> 
-<p> 
-<%= image_tag(@item.image_url, :height => 50) %>
-</p>
 
-<p>
-  <b>Item Name:</b>
-  <%= @item.title %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @item.description %>
-</p>
-
-<p>
-  <b>Current bid:</b>
-
-<% if @item.bids %>
-      <td><%= number_to_currency(@item.highest_bid(@item.start_bid), :unit => "$") %></td>
-    <% else %>
-      <td><%= number_to_currency(@item.start_bid, :unit => "$") %></td>
-    <% end %>
-</p>
-
-<%= render 'form' %>
+<p> This auction will end on: <%= @event.end_datetime.strftime("%B %d, %Y") %></p>
+</br>
+    <h4><%= @item.title.capitalize %></h4>
+    <div class="row">
+    <%= render "/shared/item_bid_information", :item => @item %>      
+    <%= @item.description %>
+    <hr />
+  <%= link_to 'Back to Auction Items List', root_url %>
 
 <%#= link_to 'Back', bids_path %>
