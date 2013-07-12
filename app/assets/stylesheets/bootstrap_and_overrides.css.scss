@@ -52,7 +52,7 @@ th {
 }
 
 #bid_bid_amount{	
-	width: 80px;
+	width: 50px;
 }
 
 // To get rid of default spinners from html5
@@ -67,4 +67,15 @@ input[type=number]::-webkit-outer-spin-button {
 .form-inline{
 	float: left;
 	margin-right: 5px;
+}
+
+.dollar-sign{
+	float: left;
+	margin-right: 5px;
+	margin-top: 10px;
+	font-size: 15px;
+}
+
+.numeric.decimal.required{
+	padding: 8px 0px;
 }
