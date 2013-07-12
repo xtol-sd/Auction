@@ -22,11 +22,6 @@ class EventsController < ApplicationController
     @event = Event.find_by_current(true)
     @items = @event.items.all
     @bid = Bid.new
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @event }
-    end
   end
 
   # GET /events/new
