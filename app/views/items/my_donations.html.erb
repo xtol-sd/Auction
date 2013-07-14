@@ -19,8 +19,10 @@
   <% else %>
 <% @items.each do |item| %>
   <% @donations.each do |donation| %>
-     <% if donation.item_id == item.id %>
-           <%= item.title %>
+    <% if donation.item_id == item.id %>
+      <div class="title-size">
+        <%= item.title %>
+      </div>
           <div class="row">
             <div class="span9"><%= image_tag(item.image_url, :height => 50) %></div>
             <div class="span3">
