@@ -33,7 +33,11 @@
                   <i>Current bid:</i>
                 <% end %>
               <% else %>
-                <i>Final bid:</i>
+                <% if item.bids.empty? %>
+                  <i>This item was not sold:</i>
+                <% else %>
+                  <i>This item sold for:</i>
+                <% end %>
               <% end %>  
               <% if !item.bids.nil? %>
                 <%= number_to_currency(item.highest_bid(item.start_bid), :unit => "$") %>
