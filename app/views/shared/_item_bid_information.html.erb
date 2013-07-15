@@ -1,5 +1,5 @@
 <div class="span9">
-  <%= link_to image_tag(item.image_url, :height => 50), event_item_path(@event, item) %>
+  <%= image_tag item.image_url.to_s %>
 </div>
 <div class="span3">
   
