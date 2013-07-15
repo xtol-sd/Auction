@@ -43,13 +43,14 @@ describe "Create a bid" do
       end
     end
 
+    #this doesn't work right yet
     describe "when the event is finished" do
       before do
-        event.end_datetime = DateTime.now - 1.day
+        event.end_datetime = DateTime.now - 1.week
         visit event_path(event)
       end
       it "page should not display a bid form" do
-        page.should_not have_content 'Bid'
+        page.should_not have_button 'Bid'
       end
     end 
   end
