@@ -47,6 +47,7 @@ describe "Create a bid" do
     describe "when the event is finished" do
       before do
         event.end_datetime = DateTime.now - 1.week
+        event.save
         visit event_path(event)
       end
       it "page should not display a bid form" do
@@ -55,7 +56,7 @@ describe "Create a bid" do
     end 
   end
   
-  describe "On the My Bids Page" do
+  describe "on the My Bids Page" do
     before do 
       visit new_user_session_path
       fill_in "Email",    with: user.email.upcase
