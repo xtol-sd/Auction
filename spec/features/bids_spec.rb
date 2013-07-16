@@ -104,14 +104,16 @@ describe "Bids" do
   describe "when not logged in" do
     before { visit root_path } 
     it {should_not have_button 'Bid'}
-    it {should have_content "Auction Name"}
+    it {should have_content "Event Name"}
+
 
     describe "when auction is finished" do
       before do
         event.end_datetime = DateTime.now - 1.week
         event.save
       end
-      it {should have_content "Auction Name"}
+      it {should have_content "Event Name"}
+
     end
   end
 end
