@@ -1,0 +1,62 @@
+
+<%= link_to("End Auction", edit_event_path(@event), :class => 'btn btn-mini offset10') %>
+
+<h1> My Bids </h1>
+
+<div id="countDownTimer" class="span4 "></div> 
+<script> 
+  var year = <%= @event.end_datetime.strftime("%Y") %>; 
+  var month = <%= @event.end_datetime.strftime("%-m") %>; 
+  var day = <%= @event.end_datetime.strftime("%-d") %>; 
+  var eventEndDate = new Date(); 
+  eventEndDate = new Date(year, month - 1, day); 
+  $('#countDownTimer').countdown({until: eventEndDate}); 
+</script>
+<p> This auction will end on: <%= @event.end_datetime.strftime("%B %d, %Y") %></p>
+
+
+<% if @bids.blank? %>
+  <i><%= "You have not yet bid on any items." %></br>
+    <%= "Please go to " %>
+    <%= link_to "Auction Items", event_path(Event.find_by_current(true)) %>
+    <%= " to see items up for bid" %></i>
+<% else %>  
+
+<% @items.each do |item| %>
+  <% bidcheck = 0 %>
+  <% @bids.each do |bid| %>
+    <% if bidcheck == 0 %>
+      <% if bid.item_id == item.id  %>
+      <div class="title-size">
+        <%= item.title %>
+      </div>
+        <div class="row">
+          <div class="span9"><%= image_tag(item.image_url, :height => 50) %></div>
+          <div class="span3">
+            <% if !event_over?(item.event) %>
+              <i>Current bid:</i>$<%= number_with_precision(item.highest_bid(item.start_bid), :precision => 0) %></br>
+              <b>My bid:</b>$<%= number_with_precision(item.my_highest_bid(current_user, item.id, item.start_bid), :precision => 0) %>
+              <% bidcheck = 1 %>
+              <% if item.my_highest_bid(current_user, item.id, item.start_bid) == item.highest_bid(item.start_bid) %>
+                <p><span class="label label-success"> Current Top Bidder <i class="icon-thumbs-up"></i> </span></p>
+              <% else %>
+                <p class = "text-error"> Not Top Bidder <i class="icon-thumbs-down"></i> </p>
+                <%= render 'shared/bid_form', :item => item %>
+              <% end %>       
+            <% else %>
+              <i>Final bid:</i><%= number_to_currency(item.highest_bid(item.start_bid), :unit => "$") %>
+              <% if item.current_user_won?(current_user) %>
+                </br><span class="label label-success">You won!</span>
+              <% end %>
+              <% bidcheck = 1 %>
+            <% end %>  
+            </br>
+
+          </div>
+        </div>
+        <hr />
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

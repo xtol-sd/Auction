@@ -1,0 +1,12 @@
+<% @item = @bid.item %> 
+
+<p> This auction will end on: <%= @event.end_datetime.strftime("%B %d, %Y") %></p>
+</br>
+    <h4><%= @item.title.capitalize %></h4>
+    <div class="row">
+    <%= render "/shared/item_bid_information", :item => @item %>      
+    <%= @item.description %>
+    <hr />
+  <%= link_to 'Back to Auction Items List', root_url %>
+
+<%#= link_to 'Back', bids_path %>

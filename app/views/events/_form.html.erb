@@ -1,0 +1,14 @@
+<%= simple_form_for(@event) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+<!--     <%= f.input :name %>
+    <%= f.input :start_datetime %>
+ -->
+    <%= f.input :end_datetime, :hint => "Set date to yesterday to see the end of the auction" %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

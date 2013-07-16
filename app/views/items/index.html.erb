@@ -1,0 +1,23 @@
+<h1>Auction Items</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th>Name</th>
+    <th>Current Bid</th>
+  </tr>
+
+<% @items.each do |item| %>
+  <tr>
+
+    <td><%= link_to image_tag(item.image_url, :height => 50), item %></td>
+    <td><%= link_to item.title, item %></td>
+    <% if item.bids %>
+      <td><%= number_to_currency(item.highest_bid(item.start_bid), :unit => "$") %></td>
+    <% else %>
+      <td><%= number_to_currency(item.start_bid, :unit => "$") %></td>
+    <% end %>
+   
+  </tr>
+<% end %>
+</table>

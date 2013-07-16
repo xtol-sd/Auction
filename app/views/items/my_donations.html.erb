@@ -1,0 +1,55 @@
+
+<h1> My Donations </h1>
+
+<div id="countDownTimer" class="span4 "></div> 
+<script> 
+  var year = <%= @event.end_datetime.strftime("%Y") %>; 
+  var month = <%= @event.end_datetime.strftime("%-m") %>; 
+  var day = <%= @event.end_datetime.strftime("%-d") %>; 
+  var eventEndDate = new Date(); 
+  eventEndDate = new Date(year, month - 1, day); 
+  $('#countDownTimer').countdown({until: eventEndDate}); 
+</script>
+
+<% if @donations.blank? %>
+  <i><%= "You have not made any donations." %></br>
+    <%= "Please go to " %>
+    <%= link_to "Donate Item", new_event_item_path(Event.find_by_current(true)) %>
+  </i>
+  <% else %>
+<% @items.each do |item| %>
+  <% @donations.each do |donation| %>
+    <% if donation.item_id == item.id %>
+      <div class="title-size">
+        <%= item.title %>
+      </div>
+          <div class="row">
+            <div class="span9"><%= image_tag(item.image_url, :height => 50) %></div>
+            <div class="span3">
+              <% if !event_over?(item.event) %>
+                <% if item.bids.empty? %>
+                  <i>Start bid:</i>
+                <% else %>
+                  <i>Current bid:</i>
+                <% end %>
+              <% else %>
+                <% if item.bids.empty? %>
+                  <i>This item was not sold:</i>
+                <% else %>
+                  <i>This item sold for:</i>
+                <% end %>
+              <% end %>  
+              <% if !item.bids.nil? %>
+                <%= number_to_currency(item.highest_bid(item.start_bid), :unit => "$") %>
+              <% else %>
+                <%= number_to_currency(item.start_bid, :unit => "$") %>
+              <% end %></br>
+            </div>
+            <div class="span9"><%= item.description %></div>
+          </div>
+          <hr />
+        
+     <% end %>
+    <% end %>
+  <% end %>
+<% end %>

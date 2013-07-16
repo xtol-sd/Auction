@@ -1,0 +1,6 @@
+<%= simple_form_for(@bid) do |f| %>
+  <%= f.error_notification %>
+    <%= f.hidden_field :item_id, :value => @bid.item.id %>
+  	<%= f.input :bid_amount, label: false, input_html: { value:  number_with_precision(@bid.item.top_bid_amount + 5, :precision => 0) }  %>
+  	<%= f.button :submit, 'Bid', :confirm => "Are you sure you want to bid on the #{@bid.item.title}?", :class => "btn btn-small btn-primary", :id => 'right_col_input' %>
+<% end %>

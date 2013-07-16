@@ -1,0 +1,25 @@
+<h1>
+</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>start date</th>
+    <th>end date</th>
+    <td>current?</th>
+  </tr>
+
+<% @events.each do |event| %>
+  <tr>
+
+    <td><%= event.name %></td>
+    <td><%= event.start_datetime.strftime("%B %d, %Y") %></td>
+    <td><%= event.end_datetime.strftime("%B %d, %Y") %></td>
+    <td><%= event.current %></td>
+    <td><%= link_to 'Show', event %></td>
+    <td><%= link_to 'Edit', edit_event_path(event) %></td>
+    <td><%= link_to 'Destroy', event, :method => :delete, data: { confirm: 'Are you sure you want to destroy this auction?' } %></td>
+  </tr>
+<% end %>
+</table>
+

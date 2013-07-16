@@ -1,0 +1,24 @@
+<h1>
+  <%= @event.name %>
+</h1>  
+
+<div id="countDownTimer" class="span4 "></div> 
+<script> 
+  var year = <%= @event.end_datetime.strftime("%Y") %>; 
+  var month = <%= @event.end_datetime.strftime("%-m") %>; 
+  var day = <%= @event.end_datetime.strftime("%-d") %>; 
+  var eventEndDate = new Date(); 
+  eventEndDate = new Date(year, month - 1, day); 
+  $('#countDownTimer').countdown({until: eventEndDate}); 
+</script>
+
+<p> This auction will end on: <%= @event.end_datetime.strftime("%B %d, %Y") %></p>
+</br>
+    <h4><%= @item.title.capitalize %></h4>
+    <div class="row">
+    <%= render "/shared/item_bid_information", :item => @item %>      
+    <%= @item.description %>
+    <hr />
+  <%= link_to 'Back to Auction Items List', root_url %>
+
+  </div>
