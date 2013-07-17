@@ -45,7 +45,7 @@ class ItemsController < ApplicationController
     @user = User.find(current_user)
    
     @donation = @item.build_donation
-     
+    @photo = @item.photos.build 
 
     respond_to do |format|
       format.html # new.html.erb
