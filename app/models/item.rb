@@ -1,15 +1,18 @@
 class Item < ActiveRecord::Base
-  attr_accessible :description, :start_bid, :title, :image, :user_attributes, :event_id, :donation_attributes
-  
+  attr_accessible :description, :start_bid, :title, :user_attributes, :event_id, :donation_attributes
+  attr_accessible :photo_attributes, :photo
+
   belongs_to :event
   belongs_to :user
   has_many :bids
   has_one :donation
+  has_many :photos
   
   accepts_nested_attributes_for :bids
   accepts_nested_attributes_for :user
   accepts_nested_attributes_for :donation
-  mount_uploader :image, ImageUploader
+  accepts_nested_attributes_for :photos
+
   default_scope order("created_at DESC")  
 
 

@@ -8,7 +8,11 @@
     <% end %>
    
     <%= f.input :title %>
-    <%= f.file_field :image %>
+    <%= f.fields_for :photo do |p| %>
+      <%= p.file_field :image %>
+      <%= p.hidden_field :item_id, :value => @item.id %>
+    <% end %>
+
     <%= f.input :description %>
     <div id="donate-dollar-sign">$</div>
     <%= f.input :start_bid %>
