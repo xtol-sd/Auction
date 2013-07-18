@@ -57,7 +57,7 @@ namespace :db do
       title: "Antique vase",
       description: "Antique-look porcelain vase with mottled 
         copper finish, rose design. Footed metal base. 11inch diameter x 15inch high.",
-      start_bid: "125.00",
+      start_bid: 125,
       event_id: "1"
     )
     pi = Photo.create!(:item_id => item.id )
@@ -76,7 +76,7 @@ namespace :db do
       displayed in numerous museums and spoken at symposiums about his unique style of ship modeling. 
       John has won over 30 awards at national and internationl model ship and boat building competitions, 
       and has authored over 17 published magazine articles about his work.",
-      start_bid: "200.00",
+      start_bid: 200,
       event_id: "1"
     )
     pi = Photo.create!(:item_id => item.id )
@@ -91,7 +91,7 @@ namespace :db do
       a privacy lock, accompanied by decorative stickers. 
 
       This set is brand new and in perfect condition with no missing or damaged pages.",
-      start_bid: "75.00",
+      start_bid: 75,
       event_id: "1"
     )
     pi = Photo.create!(:item_id => item.id )
@@ -103,7 +103,7 @@ namespace :db do
     item = Item.create!(
       title: "Raiders Season Tickets",
       description: "2013 Season Tickets to the Oakland Raiders.",
-      start_bid: "100.00",
+      start_bid: 100,
       event_id: "1"
     )
     pi = Photo.create!(:item_id => item.id )
@@ -118,7 +118,7 @@ namespace :db do
       includes: Urban Accents Grilling Rub, Urban Accents Dry Glaze, Guy Fieri BBQ Sauce, Jack Daniels Whiskey 
       Praline Pecans, Rub with Love Chicken Rub, Rub with Love Smokey BBQ Rub, Bilardo Bros. Meat Rub, 
       wild margarita meat and seafood seasoning, and metal tongs.", 
-      start_bid: "100.00",
+      start_bid: 100,
       event_id: "1"
     )
     pi = Photo.create!(:item_id => item.id )
@@ -135,7 +135,7 @@ namespace :db do
         Zesty Cheddar Flavored Cheese Spread, Trenton Original Wine Crackers, Venus Fancy Water Crackers
         Summer Beef Sausage, Gourmet California Smoked Almonds, J & M Original Cheese Straws, 
         Los Olivos Wine & Cheese Biscuits, ...in an Oval Dark Stained Gift Basket with Wooden Handles.", 
-      start_bid: "100.00",
+      start_bid: 100,
       event_id: "1"
     )
     pi = Photo.create!(:item_id => item.id )
