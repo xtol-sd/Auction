@@ -61,7 +61,7 @@ namespace :db do
       event_id: "1"
     )
     pi = Photo.create!(:item_id => item.id )
-    pi.image.store!(File.open(File.join(Rails.root, 'public/assets/images/photo/image/1/thumb_antique_vase.gif')))
+    pi.image.store!(File.open(File.join(Rails.root, 'public/assets/images/photo/image/1/antique_vase.gif')))
     item.photos << pi
     item.save!
 
@@ -80,7 +80,7 @@ namespace :db do
       event_id: "1"
     )
     pi = Photo.create!(:item_id => item.id )
-    pi.image.store!(File.open(File.join(Rails.root, 'public/assets/images/photo/image/2/thumb_ship_in_bottle.gif')))
+    pi.image.store!(File.open(File.join(Rails.root, 'public/assets/images/photo/image/2/ship_in_bottle.gif')))
     item.photos << pi
     item.save!
 
@@ -95,7 +95,7 @@ namespace :db do
       event_id: "1"
     )
     pi = Photo.create!(:item_id => item.id )
-    pi.image.store!(File.open(File.join(Rails.root, 'public/assets/images/photo/image/3/thumb_harry_potter_book_set.gif')))
+    pi.image.store!(File.open(File.join(Rails.root, 'public/assets/images/photo/image/3/harry_potter_book_set.gif')))
     item.photos << pi
     item.save!
 
@@ -107,7 +107,7 @@ namespace :db do
       event_id: "1"
     )
     pi = Photo.create!(:item_id => item.id )
-    pi.image.store!(File.open(File.join(Rails.root, 'public/assets/images/photo/image/4/thumb_default_image.png')))
+    pi.image.store!(File.open(File.join(Rails.root, 'public/assets/images/photo/image/4/default_image.png')))
     item.photos << pi
     item.save!
 
@@ -122,7 +122,7 @@ namespace :db do
       event_id: "1"
     )
     pi = Photo.create!(:item_id => item.id )
-    pi.image.store!(File.open(File.join(Rails.root, 'public/assets/images/photo/image/5/thumb_bbq_gift_basket.gif')))
+    pi.image.store!(File.open(File.join(Rails.root, 'public/assets/images/photo/image/5/bbq_gift_basket.gif')))
     item.photos << pi
     item.save!
 
@@ -139,7 +139,7 @@ namespace :db do
       event_id: "1"
     )
     pi = Photo.create!(:item_id => item.id )
-    pi.image.store!(File.open(File.join(Rails.root, 'public/assets/images/photo/image/6/thumb_cheese_gift_basket.gif')))
+    pi.image.store!(File.open(File.join(Rails.root, 'public/assets/images/photo/image/6/cheese_gift_basket.gif')))
     item.photos << pi
     item.save!
   
