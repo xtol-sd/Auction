@@ -12,7 +12,7 @@
   eventEndDate = new Date(year, month - 1, day); 
   $('#countDownTimer').countdown({until: eventEndDate}); 
 </script>
-<p> This auction will end on: <%= @event.end_datetime.strftime("%B %d, %Y") %></p>
+<p class="subtitle"> This auction will end on: <%= @event.end_datetime.strftime("%B %d, %Y") %></p>
 
 
 <% if @bids.blank? %>
@@ -27,11 +27,12 @@
   <% @bids.each do |bid| %>
     <% if bidcheck == 0 %>
       <% if bid.item_id == item.id  %>
-      <div class="title-size span6 offset2">
-        <%= item.title.capitalize %>
-      </div>
         <div class="row">
-          <div class="span9"><%= image_tag(item.find_thumb_photo_url) %></div>
+          <div class="span2"><%= image_tag(item.find_thumb_photo_url) %>
+          </div>
+          <div class="title-size span7">
+            <%= item.title %>
+          </div>
           <div class="span3">
             <% if !event_over?(item.event) %>
               <i>Current bid:</i>$<%= number_with_precision(item.highest_bid(item.start_bid), :precision => 0) %></br>
@@ -51,7 +52,6 @@
               <% bidcheck = 1 %>
             <% end %>  
             </br>
-
           </div>
         </div>
         <hr />
