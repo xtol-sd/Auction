@@ -28,7 +28,7 @@
     <% if bidcheck == 0 %>
       <% if bid.item_id == item.id  %>
       <div class="title-size span6 offset2">
-        <%= item.title %>
+        <%= item.title.capitalize %>
       </div>
         <div class="row">
           <div class="span9"><%= image_tag(item.find_thumb_photo_url) %></div>
