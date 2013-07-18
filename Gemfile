@@ -18,6 +18,8 @@ gem 'rolify'
 gem 'simple_form'
 gem "faker"
 gem "bcrypt-ruby", '~> 3.0.0'
+gem "rmagick"
+
 
 group :production do
   gem 'pg'
