@@ -14,13 +14,17 @@
 
 <p> This auction will end on: <%= @event.end_datetime.strftime("%B %d, %Y") %></p>
 </br>
-    <h4><%= @item.title.capitalize %></h4>
     <div class="row">
-      <div class="span9">
+      <div class="span3">
         <%= image_tag(@item.find_photo_url) %>
       </div>
+      <div class="span5">
+        <h4><%= @item.title.capitalize %></h4>
+        <%= @item.description %>
+      </div>
+      <div class="span1">
+      </div>
     <%= render "/shared/item_bid_information", :item => @item %>      
-    <%= @item.description %>
     <hr />
   <%= link_to 'Back to Auction Items List', root_url %>
 
