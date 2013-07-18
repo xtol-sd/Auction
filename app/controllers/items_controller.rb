@@ -43,7 +43,7 @@ class ItemsController < ApplicationController
     @event = Event.find_by_current(true)
     @item = @event.items.build
     @user = User.find(current_user)
-   
+  
     @donation = @item.build_donation
     @photo = @item.photos.build 
 
