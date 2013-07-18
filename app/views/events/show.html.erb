@@ -15,7 +15,7 @@
 
 <% @items.each do |item| %>
   <div class="title-size span6 offset2">
-    <%= link_to item.title, event_item_path(@event, item) %>
+    <%= link_to item.title.capitalize, event_item_path(@event, item) %>
   </div>
   <div id="target_fake">
     <div class="row">
