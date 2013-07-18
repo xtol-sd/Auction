@@ -8,8 +8,10 @@
    
     <%= f.input :title %>
     <%= f.fields_for :photos do |p| %>
+      <%= p.label "Upload Photo" %>
       <%= p.file_field :image %>
       <%= p.hidden_field :item_id, :value => @item.id %>
+
     <% end %>
 
     <%= f.input :description %>
