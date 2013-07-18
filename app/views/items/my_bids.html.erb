@@ -31,7 +31,7 @@
         <%= item.title %>
       </div>
         <div class="row">
-          <div class="span9"><%= image_tag(item.find_first_photo_url) %></div>
+          <div class="span9"><%= image_tag(item.find_thumb_photo_url) %></div>
           <div class="span3">
             <% if !event_over?(item.event) %>
               <i>Current bid:</i>$<%= number_with_precision(item.highest_bid(item.start_bid), :precision => 0) %></br>

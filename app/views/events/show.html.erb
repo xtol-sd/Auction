@@ -19,6 +19,9 @@
   </div>
   <div id="target_fake">
     <div class="row">
+      <div class="span9">
+        <%= image_tag(item.find_thumb_photo_url) %>
+      </div>
       <%= render "/shared/item_bid_information", :item => item %>      
       <hr/>
     </div>

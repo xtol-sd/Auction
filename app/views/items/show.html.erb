@@ -16,6 +16,9 @@
 </br>
     <h4><%= @item.title.capitalize %></h4>
     <div class="row">
+      <div class="span9">
+        <%= image_tag(@item.find_photo_url) %>
+      </div>
     <%= render "/shared/item_bid_information", :item => @item %>      
     <%= @item.description %>
     <hr />

@@ -19,11 +19,19 @@ class Item < ActiveRecord::Base
   validates_presence_of :title, :description, :start_bid
 
   #will need to be changed when more than one photo is implemented
-  def find_first_photo_url
+  def find_thumb_photo_url
+    self.photos.each do |photo|
+      return photo.image_url(:thumb)
+    end
+  end
+
+  def find_photo_url
     self.photos.each do |photo|
       return photo.image_url
     end
   end
+
+
 
   def next_allowed_bid
     # if then statement abbreviation
