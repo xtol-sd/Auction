@@ -3,7 +3,7 @@ namespace :db do
   task populate: :environment do
     require 'faker'
 
-    puts 'SPONSER, BIDDER, SELLER'
+    # puts 'SPONSER, BIDDER, SELLER'
     
     User.create!(name: "sponsor",
                  email: "sponsor@example.com",
@@ -53,15 +53,20 @@ namespace :db do
     #Item Descriptions
     puts "SAMPLE ITEMS"
    
-    Item.create!(
+    item = Item.create!(
       title: "Antique vase",
       description: "Antique-look porcelain vase with mottled 
         copper finish, rose design. Footed metal base. 11inch diameter x 15inch high.",
       start_bid: "125.00",
       event_id: "1"
     )
+    pi = Photo.create!(:item_id => item.id )
+    pi.image.store!(File.open(File.join(Rails.root, 'app/assets/images/antique_vase.gif')))
+    item.photos << pi
+    item.save!
 
-    Item.create!(
+
+    item = Item.create!(
       title: "Ship in a Bottle",
       description: "'Newsboy' ship in bottle model, 200 ml 'hip flask' bottle.  Finely crafted, 
       highly detailed miniature ship models. Built by magazine article author and award winning 
@@ -74,8 +79,12 @@ namespace :db do
       start_bid: "200.00",
       event_id: "1"
     )
+    pi = Photo.create!(:item_id => item.id )
+    pi.image.store!(File.open(File.join(Rails.root, 'app/assets/images/ship_in_bottle.gif')))
+    item.photos << pi
+    item.save!
 
-    Item.create!(
+    item = Item.create!(
       title: "Harry Potter Hardcover Boxed Set in Treasure Box",
       description: "Collectible hardcover editions of all seven books in J.K. Rowlings phenomenal 
       bestselling saga are snugly packed in a decorative, trunk-like box with sturdy handles and 
@@ -85,15 +94,24 @@ namespace :db do
       start_bid: "75.00",
       event_id: "1"
     )
+    pi = Photo.create!(:item_id => item.id )
+    pi.image.store!(File.open(File.join(Rails.root, 'app/assets/images/harry_potter_book_set.gif')))
+    item.photos << pi
+    item.save!
 
-    Item.create!(
+
+    item = Item.create!(
       title: "Raiders Season Tickets",
       description: "2013 Season Tickets to the Oakland Raiders.",
       start_bid: "100.00",
       event_id: "1"
     )
+    pi = Photo.create!(:item_id => item.id )
+    pi.image.store!(File.open(File.join(Rails.root, 'app/assets/images/default_image.png')))
+    item.photos << pi
+    item.save!
 
-    Item.create!(
+    item = Item.create!(
       title: "Gourmet BBQ Gift Basket",
       description: "The Barbeque Gourmet Gift Basket is the perfect gift for anyone that loves to grill, 
       adding new flavors to their favorite dishes. Arriving in an attractive metal basket, this gourmet gift 
@@ -103,9 +121,13 @@ namespace :db do
       start_bid: "100.00",
       event_id: "1"
     )
+    pi = Photo.create!(:item_id => item.id )
+    pi.image.store!(File.open(File.join(Rails.root, 'app/assets/images/bbq_gift_basket.gif')))
+    item.photos << pi
+    item.save!
 
 
-    Item.create!(
+    item = Item.create!(
       title: "Gourmet Cheese Gift Basket",
       description: "Includes: Gift Boxed Wooden Handle Cheese Spreader, White Zinfandel Havarti Wine Cheese Cup,
         Swiss Blend Cheese Triangle, Old Hickory Cheese Triangle, Pepper Flavor Cheese Bar,
@@ -116,14 +138,19 @@ namespace :db do
       start_bid: "100.00",
       event_id: "1"
     )
+    pi = Photo.create!(:item_id => item.id )
+    pi.image.store!(File.open(File.join(Rails.root, 'app/assets/images/cheese_gift_basket.gif')))
+    item.photos << pi
+    item.save!
 
 
-  puts 'FIRST EVENT'
-  Event.create!(
-    :current => true,
-    :end_datetime => DateTime.now + 1.month,
-    :name => "Auction 2013"
-  )
+
+  # puts 'FIRST EVENT'
+  # Event.create!(
+  #   :current => true,
+  #   :end_datetime => DateTime.now + 1.month,
+  #   :name => "Auction 2013"
+  # )
 
   end
 end

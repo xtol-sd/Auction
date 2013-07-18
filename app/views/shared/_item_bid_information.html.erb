@@ -1,5 +1,5 @@
 <div class="span9">
-  <%= image_tag item.photos.image_url.to_s %>
+  <%= image_tag(item.find_first_photo_url) %>
 </div>
 <div class="span3">
   
