@@ -142,15 +142,13 @@ namespace :db do
     pi.image.store!(File.open(File.join(Rails.root, 'app/assets/images/cheese_gift_basket.gif')))
     item.photos << pi
     item.save!
-
-
-
-  # puts 'FIRST EVENT'
-  # Event.create!(
-  #   :current => true,
-  #   :end_datetime => DateTime.now + 1.month,
-  #   :name => "Auction 2013"
-  # )
+  
+    puts 'FIRST EVENT'
+    Event.create!(
+      :current => true,
+      :end_datetime => DateTime.now + 1.month,
+      :name => "Auction 2013"
+    )
 
   end
 end
