@@ -12,11 +12,17 @@
 </script>
 <p class="subtitle"> This auction will end on: <%= @event.end_datetime.strftime("%B %d, %Y") %></p>
 
-<% if @donations.blank?  && !event_over?(@event) %>
-  <i><%= "You have not made any donations." %></br>
-    <%= "Please go to " %>
-    <%= link_to "Donate Item", new_event_item_path(Event.find_by_current(true)) %>
-  </i>
+<% if @donations.blank? %>
+  <% if !event_over?(@event) %> 
+    <i><%= "You have not donated any items to this auction." %></br>
+      <%= "Please go to " %>
+      <%= link_to "Donate Item", new_event_item_path(Event.find_by_current(true)) %>
+      <%= " if you would like to." %></br></br>
+      <%= "Thank you." %>
+    </i>
+  <% else %>
+    <i><%= "You did not donate any items to this auction." %></i>
+  <% end %>
 <% else %>
   <% @items.each do |item| %>
     <% @donations.each do |donation| %>
