@@ -61,7 +61,7 @@ namespace :db do
       event_id: "1"
     )
     pi = Photo.create!(:item_id => item.id )
-    pi.image.store!(File.open(File.join(Rails.root, 'app/assets/images/antique_vase.gif')))
+    pi.image.store!(File.open(File.join(Rails.root, 'app/assets/images/antique_vase.jpg')))
     item.photos << pi
     item.save!
 
@@ -80,7 +80,7 @@ namespace :db do
       event_id: "1"
     )
     pi = Photo.create!(:item_id => item.id )
-    pi.image.store!(File.open(File.join(Rails.root, 'app/assets/images/ship_in_bottle.gif')))
+    pi.image.store!(File.open(File.join(Rails.root, 'app/assets/images/ship_in_bottle.jpg')))
     item.photos << pi
     item.save!
 
@@ -95,7 +95,7 @@ namespace :db do
       event_id: "1"
     )
     pi = Photo.create!(:item_id => item.id )
-    pi.image.store!(File.open(File.join(Rails.root, 'app/assets/images/harry_potter_book_set.gif')))
+    pi.image.store!(File.open(File.join(Rails.root, 'app/assets/images/harry_potter_book_set.jpg')))
     item.photos << pi
     item.save!
 
@@ -107,7 +107,7 @@ namespace :db do
       event_id: "1"
     )
     pi = Photo.create!(:item_id => item.id )
-    pi.image.store!(File.open(File.join(Rails.root, 'app/assets/images/default_image.png')))
+    pi.image.store!(File.open(File.join(Rails.root, 'app/assets/images/raiders_season_tickets.jpeg')))
     item.photos << pi
     item.save!
 
@@ -122,7 +122,7 @@ namespace :db do
       event_id: "1"
     )
     pi = Photo.create!(:item_id => item.id )
-    pi.image.store!(File.open(File.join(Rails.root, 'app/assets/images/bbq_gift_basket.gif')))
+    pi.image.store!(File.open(File.join(Rails.root, 'app/assets/images/bbq_gift_basket.jpg')))
     item.photos << pi
     item.save!
 
@@ -139,7 +139,7 @@ namespace :db do
       event_id: "1"
     )
     pi = Photo.create!(:item_id => item.id )
-    pi.image.store!(File.open(File.join(Rails.root, 'app/assets/images/cheese_gift_basket.gif')))
+    pi.image.store!(File.open(File.join(Rails.root, 'app/assets/images/cheese_gift_basket.jpg')))
     item.photos << pi
     item.save!
   

@@ -1,6 +1,4 @@
 
-<div class="span3">
-  
   <% if @event.finished?%>  
     <% if item.bids.empty? %>
        <i><font color="gray">This item was not sold</font></i> 
@@ -24,6 +22,3 @@
       <%= render "/shared/bid_form", :item => item %>
     <% end %>
   <% end %>  
-  
-</div>
-</div>

@@ -20,8 +20,9 @@
       <div class="span9">
         <%= image_tag(@item.find_photo_url) %>
       </div>
-    <%= render "/shared/item_bid_information", :item => @item %>      
-    <%= @item.description %>
+      <%= render "/shared/item_bid_information", :item => @item %>
+      </div>      
+      <%= @item.description %>
     <hr />
   <%= link_to 'Back to Auction Items List', root_url %>
 
