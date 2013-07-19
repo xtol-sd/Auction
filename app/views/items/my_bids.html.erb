@@ -28,25 +28,22 @@
     <% if bidcheck == 0 %>
       <% if bid.item_id == item.id  %>
         <div class="row">
-          <div class="span2"><%= image_tag(item.find_thumb_photo_url) %>
-          </div>
-          <div class="title-size span7">
-            <%= item.title %>
-          </div>
+          <div class="span2"><%= image_tag(item.find_thumb_photo_url) %></div>
+          <div class="title-size span7"><%= item.title %></div>
           <div class="span3">
             <% if !event_over?(item.event) %>
-              <i>Current bid:</i>$<%= number_with_precision(item.highest_bid(item.start_bid), :precision => 0) %></br>
-              <b>My bid:</b>$<%= number_with_precision(item.my_highest_bid(current_user, item.id, item.start_bid), :precision => 0) %>
-              <% bidcheck = 1 %>
-              <% if item.my_highest_bid(current_user, item.id, item.start_bid) == item.highest_bid(item.start_bid) %>
+              <% if item.top_bid_me?(current_user.id) %>
+                <i>Your bid:</i>$<%= number_with_precision(item.top_bid_amount, :precision => 0) %></br>
                 <p><span class="label label-success"> Current Top Bidder <i class="icon-thumbs-up"></i> </span></p>
-              <% else %>
+                <% bidcheck = 1 %>
+              <% else %>         
+                <i>Current bid:</i>$<%= number_with_precision(item.top_bid_amount, :precision => 0) %></br>
                 <p class = "text-error"> Not Top Bidder <i class="icon-thumbs-down"></i> </p>
                 <%= render 'shared/bid_form', :item => item %>
-              <% end %>       
+              <% end %>
             <% else %>
-              <i>Final bid:</i><%= number_to_currency(item.highest_bid(item.start_bid), :unit => "$") %>
-              <% if item.current_user_won?(current_user) %>
+              <i>Final bid:</i><%= number_to_currency(item.top_bid_amount, :unit => "$") %>
+              <% if item.top_bid_me?(current_user.id) %>
                 </br><span class="label label-success">You won!</span>
               <% end %>
               <% bidcheck = 1 %>
