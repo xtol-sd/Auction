@@ -18,6 +18,7 @@
   <% @bids.each do |bid| %>
     <% if bidcheck == 0 %>
       <% if bid.item_id == item.id  %>
+        <% bidcheck = 1 %>
         <div class="row">
           <div class="span2"><%= image_tag(item.find_thumb_photo_url) %></div>
           <div class="title-size span7"><%= item.title %></div>
@@ -26,7 +27,6 @@
               <% if item.top_bid_me?(current_user.id) %>
                 <i>Your bid:</i>$<%= number_with_precision(item.top_bid_amount, :precision => 0) %></br>
                 <p><span class="label label-success"> Current Top Bidder <i class="icon-thumbs-up"></i> </span></p>
-                <% bidcheck = 1 %>
               <% else %>         
                 <i>Current bid:</i>$<%= number_with_precision(item.top_bid_amount, :precision => 0) %></br>
                 <p class = "text-error"> Not Top Bidder <i class="icon-thumbs-down"></i> </p>
