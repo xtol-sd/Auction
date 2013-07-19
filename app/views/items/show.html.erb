@@ -4,8 +4,7 @@
 </h1>  
 
 <%= render 'shared/count_down_timer' %>
-
-<p> This auction will end on: <%= @event.end_datetime.strftime("%B %d, %Y") %></p>
+<%= render 'shared/auction_end_info' %>
 </br>
     <h4><%= @item.title.capitalize %></h4>
     <div class="row">

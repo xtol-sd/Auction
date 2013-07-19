@@ -4,9 +4,7 @@
 <h1> My Bids </h1>
 
 <%= render 'shared/count_down_timer' %>
-
-<p class="subtitle"> This auction will end on: <%= @event.end_datetime.strftime("%B %d, %Y") %></p>
-
+<%= render 'shared/auction_end_info' %>
 
 <% if @bids.blank? %>
   <i><%= "You have not yet bid on any items." %></br>

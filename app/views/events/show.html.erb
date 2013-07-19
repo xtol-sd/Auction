@@ -3,8 +3,7 @@
 <h1> <%= @event.name %></h1>  
 
 <%= render 'shared/count_down_timer' %>
-
-<p> This auction will end on: <%= @event.end_datetime.strftime("%B %d, %Y") %></p>
+<%= render 'shared/auction_end_info' %>
 
 <% @items.each do |item| %>
   <div class="row">

@@ -1,0 +1,5 @@
+<% if !event_over?(@event) %>
+  <p class="subtitle"> This auction will end on: <%= @event.end_datetime.strftime("%B %d, %Y") %></p>
+<% else %>
+  <p class="subtitle"> This auction ended on: <%= @event.end_datetime.strftime("%B %d, %Y") %></p>
+<% end %>
