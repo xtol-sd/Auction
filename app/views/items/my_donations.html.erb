@@ -10,6 +10,7 @@
   eventEndDate = new Date(year, month - 1, day); 
   $('#countDownTimer').countdown({until: eventEndDate}); 
 </script>
+<p class="subtitle"> This auction will end on: <%= @event.end_datetime.strftime("%B %d, %Y") %></p>
 
 <% if @donations.blank? %>
   <i><%= "You have not made any donations." %></br>
@@ -20,35 +21,38 @@
 <% @items.each do |item| %>
   <% @donations.each do |donation| %>
     <% if donation.item_id == item.id %>
-      <div class="title-size  span6 offset2">
-        <%= item.title.capitalize %>
+      <div class="row">
+        <div class="span2"><%= image_tag(item.find_thumb_photo_url) %></div>
+        <div class="title-size span6">
+          <h4><%= item.title %></h4>
+          <p>
+            <%= item.description %>
+          </p>  
+        </div>
+        <div class="span1">
+        </div>
+        <div class="span3">
+          <% if !event_over?(item.event) %>
+            <% if item.bids.empty? %>
+              <i>Start bid:</i>
+            <% else %>
+              <i>Current bid:</i>
+            <% end %>
+          <% else %>
+            <% if item.bids.empty? %>
+              <i>This item was not sold:</i>
+            <% else %>
+              <i>This item sold for:</i>
+            <% end %>
+          <% end %>  
+          <% if !item.bids.nil? %>
+            <%= number_to_currency(item.highest_bid(item.start_bid), :unit => "$") %>
+          <% else %>
+            <%= number_to_currency(item.start_bid, :unit => "$") %>
+          <% end %></br>
+        </div>
       </div>
-          <div class="row">
-            <div class="span9"><%= image_tag(item.find_thumb_photo_url) %></div>
-            <div class="span3">
-              <% if !event_over?(item.event) %>
-                <% if item.bids.empty? %>
-                  <i>Start bid:</i>
-                <% else %>
-                  <i>Current bid:</i>
-                <% end %>
-              <% else %>
-                <% if item.bids.empty? %>
-                  <i>This item was not sold:</i>
-                <% else %>
-                  <i>This item sold for:</i>
-                <% end %>
-              <% end %>  
-              <% if !item.bids.nil? %>
-                <%= number_to_currency(item.highest_bid(item.start_bid), :unit => "$") %>
-              <% else %>
-                <%= number_to_currency(item.start_bid, :unit => "$") %>
-              <% end %></br>
-            </div>
-            <div class="span9"><%= item.description %></div>
-          </div>
-          <hr />
-        
+      <hr />        
      <% end %>
     <% end %>
   <% end %>
