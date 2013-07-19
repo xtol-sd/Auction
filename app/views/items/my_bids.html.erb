@@ -6,6 +6,18 @@
 <%= render 'shared/count_down_timer' %>
 <%= render 'shared/auction_end_info' %>
 
+
+<script>
+
+function timedRefresh(timeoutPeriod) {
+  setTimeout("location.reload(true);",timeoutPeriod);
+}
+
+</script>
+
+<body onload="JavaScript:timedRefresh(10000);">
+
+
 <% if @bids.blank? %>
   <i><%= "You have not yet bid on any items." %></br>
     <%= "Please go to " %>
