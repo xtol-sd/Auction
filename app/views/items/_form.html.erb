@@ -1,21 +1,39 @@
 <%= simple_form_for ([@event, @item]) do |f| %>
   <%= f.error_notification %>
-      
-    <%= f.fields_for :donation do |builder| %>
-      <%= builder.hidden_field :user_id, :value => @user.id %>
-      <%= builder.hidden_field :item_id, :value => @item.id %>
-    <% end %>
-   
+        
     <%= f.input :title %>
     <%= f.fields_for :photos do |p| %>
-      <%= p.label "Upload Photo" %>
-      <%= p.file_field :image %>
-      <%= p.hidden_field :item_id, :value => @item.id %>
+      <% if @user.name == "sponsor" %>
+        <%= image_tag(@item.find_photo_url) %>
+        <%= p.hidden_field :item_id, :value => @item.id %>
+      <% else %>
+        <%= p.label "Upload Photo" %>
+        <%= p.file_field :image %>
+        <%= p.hidden_field :item_id, :value => @item.id %>
+      <% end %>
     <% end %>
 
     <%= f.input :description %>
     <div id="donate-dollar-sign">$</div>
     <%= f.input :start_bid %>
 
-    <%= f.button :submit, 'Donate Item', :class => "btn btn-small btn-primary" %>
+    <% if @user.name != "sponsor" %>
+      <%= f.button :submit, 'Donate Item', :class => "btn btn-small btn-primary" %>
+    <% end %>
+
+    <%= f.fields_for :donation do |builder| %>
+      <%= builder.hidden_field :user_id, :value => @user.id %>
+      <%= builder.hidden_field :item_id, :value => @item.id %>
+      <% if @user.name == "sponsor" %>
+      <hr />
+      <%= builder.hidden_field :status, :value => "0" %>
+
+          <%= submit_tag("Approve Revised Donation", :class => "btn btn-large btn-primary",)  %>
+
+        <hr />
+      <% else %>
+        <%= builder.check_box :status, :style => 'visibility: hidden', :value=>"0" %>
+      <% end %>
+    <% end %>
+   
 <% end %>

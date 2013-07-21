@@ -55,7 +55,9 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
+    @event = Event.find_by_current(true)
     @item = Item.find(params[:id])
+    @user = User.find(current_user)
   end
 
   # POST /items
@@ -84,7 +86,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.update_attributes(params[:item])
-        format.html { redirect_to @item, notice: 'Item was successfully updated.' }
+        format.html { redirect_to _my_donations_path, notice: 'Item was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

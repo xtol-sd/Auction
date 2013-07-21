@@ -1,25 +1,37 @@
-<h1>Listing donations</h1>
+<h1>Donation Approval</h1>
 
-<table>
-  <tr>
-    <th>User</th>
-    <th>Item</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<%= render 'shared/count_down_timer' %>
 
-<% @donations.each do |donation| %>
-  <tr>
-    <td><%= donation.user_id %></td>
-    <td><%= donation.item_id %></td>
-    <td><%= link_to 'Show', donation %></td>
-    <td><%= link_to 'Edit', edit_donation_path(donation) %></td>
-    <td><%= link_to 'Destroy', donation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<%= render 'shared/auction_end_info' %>
+
+<% if @donations.blank? %>
+There are no donations pending approval.
+<% else %>
+  <% @items.each do |item| %>
+    <% @donations.each do |donation| %>
+      <% if donation.item_id == item.id %>
+        <div class="row">
+          <div class="span2"><%= image_tag(item.find_thumb_photo_url) %></div>
+          <div class="title-size span5">
+            <h4><%= item.title %>    <i>Start bid:</i>$<%= number_with_precision(item.top_bid_amount, :precision => 0) %></h4>
+            <p><%= item.description %></p>  
+          </div>
+          <div class="span5">
+            <% if !event_over?(item.event) %>
+              <% if donation.status == 0 %>
+                <%= render "/shared/donation_form", :donation => donation %>
+              <% elsif donation.status == 1 %>
+                <div class="approved">Approved</div>
+              <% else %>
+                <div class="rejected">Rejected</div></br>
+                <div>Comment: <%= donation.comment %></div>
+              <% end %>
+
+            <% end %>  
+          </div>
+      </div>
+      <hr />        
+     <% end %>
+    <% end %>
+  <% end %>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Donation', new_donation_path %>

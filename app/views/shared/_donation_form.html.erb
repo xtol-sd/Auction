@@ -1,0 +1,8 @@
+<%= simple_form_for donation do |f| %>
+  <%= f.error_notification %>
+
+<%= radio_button("donation", "status", "1") %> Approve</br>
+<%= radio_button("donation", "status", "2") %> Reject</br></br>
+<%= f.input :comment %>
+<%= f.button :submit, 'Submit', :class => "btn btn-small btn-primary" %>  
+<% end %>

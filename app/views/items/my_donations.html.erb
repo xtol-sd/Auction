@@ -38,7 +38,8 @@
             <% if item.bids.empty? %>
               <i>This item was not sold.</i>
             <% else %>
-              <i>This item sold for: </i>$<%= number_with_precision(item.top_bid_amount, :precision => 0) %>
+              <span class = "bid_amount"><i>This item sold for: </i>$<%= number_with_precision(item.top_bid_amount, :precision => 0) %>
+              </span>
             <% end %>
           <% end %>  
         </div>

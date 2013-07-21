@@ -107,3 +107,15 @@ input[type=number]::-webkit-outer-spin-button {
 		}
 	}
 }
+
+.approved {
+	color: #649d1c;
+	font-weight: bold;
+	font-size: 20px;	
+}
+
+.rejected {
+	color: red;
+	font-weight: bold;
+	font-size: 20px;	
+}
