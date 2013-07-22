@@ -1,0 +1,32 @@
+<script>
+  var timeout = setTimeout("location.reload(true);",180000);
+  var d = new Date(); // for now
+  var hours = d.getHours(); 
+  var minutes =  d.getMinutes(); 
+  var seconds = d.getSeconds(); 
+
+  if (minutes < 10)
+  minutes = "0" + minutes
+
+  if (seconds < 10)
+  seconds = "0" + seconds
+
+  var suffix = "AM";
+  if (hours >= 12) {
+  suffix = "PM";
+  hours = hours - 12;
+  }
+  if (hours == 0) {
+  hours = 12;
+  }
+  
+  
+
+   document.write("<b>" + "This page was last refreshed:" + hours + ":" + minutes + ":" + seconds + " " + suffix + "</b>")
+
+
+  function resetTimeout() {
+    clearTimeout(timeout);
+    timeout = setTimeout("location.reload(true);",180000);
+  }
+</script>

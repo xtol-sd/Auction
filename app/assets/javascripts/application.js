@@ -22,3 +22,6 @@ function setCountdownTimer(element, year, month, day) {
   var date = new Date(year, month, day);
   $(element).countdown({until: date});
 }
+
+
+
