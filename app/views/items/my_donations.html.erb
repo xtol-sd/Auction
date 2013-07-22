@@ -1,8 +1,8 @@
-
+<body onload="JavaScript:timedRefresh(10000);">
 <h1> My Donations </h1>
 
+<%= render 'shared/refresh_pages' %>
 <%= render 'shared/count_down_timer' %>
-
 <%= render 'shared/auction_end_info' %>
 
 <% if @donations.blank? %>
