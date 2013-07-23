@@ -65,7 +65,6 @@ namespace :db do
     item.photos << pi
     item.save!
 
-
     item = Item.create!(
       title: "Ship in a Bottle",
       description: "'Newsboy' ship in bottle model, 200 ml 'hip flask' bottle.  Finely crafted, 
@@ -149,6 +148,15 @@ namespace :db do
       :end_datetime => DateTime.now + 1.month,
       :name => "Auction 2013"
     )
+
+    puts 'APPROVE ITEMS'
+    (1..5).each do |s|
+      Donation.create!(
+        :status => "1",
+        :user_id => "3", #seller user id
+        :item_id => s
+      )
+    end
 
   end
 end
