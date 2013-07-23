@@ -4,5 +4,7 @@ FactoryGirl.define do
   factory :donation do
     user_id 1
     item_id 1
+    status 1
+    comment ''
   end
 end
