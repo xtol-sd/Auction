@@ -22,11 +22,10 @@ There are no donations pending approval.
                 <%= render "/shared/donation_form", :donation => donation %>
               <% elsif donation.status == 1 %>
                 <div class="approved">Approved</div>
-              <% else %>
+              <% elsif donation.status == 2 %>
                 <div class="rejected">Rejected</div></br>
                 <div>Comment: <%= donation.comment %></div>
               <% end %>
-
             <% end %>  
           </div>
       </div>
