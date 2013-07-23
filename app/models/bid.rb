@@ -16,7 +16,7 @@ class Bid < ActiveRecord::Base
 
   def bid_amount_is_greater_than_next_minimum_bid? 
     errors.add(:bid_amount, "Must be at least this amount. Please enter a number without symbols.") if 
-    !bid_amount.nil? && bid_amount < next_minimum_bid 
+    !bid_amount.nil? && bid_amount >= next_minimum_bid 
   end
 
   def next_minimum_bid
