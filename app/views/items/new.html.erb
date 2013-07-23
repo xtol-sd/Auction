@@ -1,4 +1,26 @@
 <h1>Donate Item</h1>
 
-<%= render 'form' %>
+<%= simple_form_for ([@event, @item]) do |f| %>
+  <%= f.error_notification %>
+       
+  <%= f.input :title %>
+  <%= f.fields_for :photos do |p| %>
+    <!-- logic here to show either existing image OR preview of selected image -->
+    <%= image_tag(@item.find_thumb_photo_url)%>
+    <%= p.label "Change photo?" %>
+    <%= p.file_field :image %>
+    <%= p.hidden_field :item_id, :value => @item.id %>
+  <% end %>
 
+  <%= f.input :description %>
+  <div id="donate-dollar-sign">$</div>
+  <%= f.input :start_bid %>
+
+  <%= f.fields_for :donation do |builder| %>
+    <%= builder.hidden_field :user_id, :value => @user.id %>
+    <%= builder.check_box :status, :style => 'visibility: hidden', :value=>"0" %>
+    <%= f.button :submit, 'Submit Item for Approval', :confirm => "Are you sure? Once approved, donations cannot be retracted.", :class => "btn btn-small btn-primary" %>
+    </br></br>
+    <%= link_to 'Cancel', _my_donations_path %>
+  <% end %> 
+<% end %>

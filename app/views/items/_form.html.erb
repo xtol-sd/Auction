@@ -1,17 +1,14 @@
+<!-- this form not called for 'donate item' and for 'edit item' anymore because will need different info for edit than new from sponsor or seller, this form is used only by 'edit item' -->
 <%= simple_form_for ([@event, @item]) do |f| %>
   <%= f.error_notification %>
        
     <%= f.input :title %>
     <%= f.fields_for :photos do |p| %>
-      <% if current_user.has_role? :admin %>
-        <%= image_tag(@item.find_thumb_photo_url) %>
-      <% else %>
-        <!-- logic here to show either existing image OR preview of selected image -->
-        <%= image_tag(@item.find_thumb_photo_url)%>
-        <%= p.label "Change photo?" %>
-        <%= p.file_field :image %>
-        <%= p.hidden_field :item_id, :value => @item.id %>
-      <% end %>
+      <!-- logic here to show either existing image OR preview of selected image -->
+      <%= image_tag(@item.find_thumb_photo_url)%>
+      <%= p.label "Change photo?" %>
+      <%= p.file_field :image %>
+      <%= p.hidden_field :item_id, :value => @item.id %>
     <% end %>
 
     <%= f.input :description %>
