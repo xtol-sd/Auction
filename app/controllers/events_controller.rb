@@ -22,6 +22,7 @@ class EventsController < ApplicationController
     @event = Event.find_by_current(true)
     @items = @event.items.all
     @bid = Bid.new
+    @donations = Donation.all
   end
 
   # GET /events/new

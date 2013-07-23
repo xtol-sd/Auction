@@ -9,16 +9,22 @@
 <%= render 'shared/auction_end_info' %>
 
 <% @items.each do |item| %>
-  <div class="row">
-    <div class="span2">
-      <%= image_tag(item.find_thumb_photo_url) %>
-    </div>
-    <div class="title-link span7">
-      <%= link_to item.title, event_item_path(@event, item) %>
-    </div>
-    <div class="span3">
-    <%= render "/shared/item_bid_information", :item => item %>
-    </div>      
-  </div>
-  <hr/>
+  <% @donations.each do |donation| %>
+    <% if donation.item_id == item.id %>
+      <% if donation.status == 1 %>
+        <div class="row">
+          <div class="span2">
+            <%= image_tag(item.find_thumb_photo_url) %>
+          </div>
+          <div class="title-link span7">
+            <%= link_to item.title, event_item_path(@event, item) %>
+          </div>
+          <div class="span3">
+          <%= render "/shared/item_bid_information", :item => item %>
+          </div>      
+        </div>
+        <hr/>
+      <% end %>
+    <% end %>
+  <% end %>
 <% end %>
