@@ -1,13 +1,11 @@
 
-
 <%= link_to("End Auction", edit_event_path(@event), :class => 'btn btn-mini offset10') %>
 
 <h1> <%= @event.name %></h1>
 
-
 <%= render 'shared/count_down_timer' %>
 <% if !event_over?(@event) %> 
-<%= render 'shared/refresh_pages' %>
+  <%= render 'shared/refresh_pages' %>
 <% end %>
 <%= render 'shared/auction_end_info' %>
 

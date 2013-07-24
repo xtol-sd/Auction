@@ -3,13 +3,11 @@
 
 <h1> My Bids </h1>
 
-
 <%= render 'shared/count_down_timer' %>
 <% if !event_over?(@event) %>
-<%= render 'shared/refresh_pages' %>
+  <%= render 'shared/refresh_pages' %>
 <% end %>
 <%= render 'shared/auction_end_info' %>
-
 
 <% if @bids.blank? %>
   <i><%= "You have not yet bid on any items." %></br>
@@ -30,17 +28,17 @@
           <div class="span3">
             <% if !event_over?(item.event) %>
               <% if item.top_bid_me?(current_user.id) %>
-                <i>Your bid:</i>$<%= number_with_precision(item.top_bid_amount, :precision => 0) %></br>
+                <h4><i>Your bid:</i>$<%= number_with_precision(item.top_bid_amount, :precision => 0) %></h4>
                 <p><span class="label label-success"> Current Top Bidder <i class="icon-thumbs-up"></i> </span></p>
               <% else %>         
-                <i>Current bid:</i>$<%= number_with_precision(item.top_bid_amount, :precision => 0) %></br>
+                <h4><i>Current bid:</i>$<%= number_with_precision(item.top_bid_amount, :precision => 0) %></h4>
                 <p class = "text-error"> Not Top Bidder <i class="icon-thumbs-down"></i> </p>
                 <%= render 'shared/bid_form', :item => item %>
               <% end %>
             <% else %>
-              <i>Final bid:</i><%= number_to_currency(item.top_bid_amount, :unit => "$") %>
+              <h4><i>Final bid:</i>$<%= number_with_precision(item.top_bid_amount, :precision => 0) %></h4>
               <% if item.top_bid_me?(current_user.id) %>
-                </br><span class="label label-success">You won!</span>
+                <span class="label label-success">You won!</span>
               <% end %>
               <% bidcheck = 1 %>
             <% end %>  

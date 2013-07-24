@@ -3,6 +3,9 @@
 </h1>  
 
 <%= render 'shared/count_down_timer' %>
+<% if !event_over?(@event) %> 
+  <%= render 'shared/refresh_pages' %>
+<% end %>
 <%= render 'shared/auction_end_info' %>
 </br>
 
@@ -11,15 +14,15 @@
     <%= image_tag(@item.find_photo_url) %>
   </div>
   <div class="span5">
-    <h4><%= @item.title.capitalize %></h4>
-    Start Bid: $<%= @item.start_bid %></br>
+    <h4><%= @item.title.capitalize %></br>
+    Start Bid: $<%= @item.start_bid %></br></h4>
     Description: <%= @item.description %>
   </div>
   <div class="span1"> 
   </div>
   <div class="span3">
   	<h4>Administrator Comment:</h4></br>
-    <%= @donation.comment %>
+    <h4><i><%= @donation.comment %></i></h4>
   </div>
 </div>      
 <hr />

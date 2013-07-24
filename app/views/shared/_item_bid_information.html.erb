@@ -13,7 +13,7 @@
     <div class = "bid_amount">
       $<%= number_with_precision(item.top_bid_amount || item.start_bid, :precision => 0) %>
     </div>
-    <small> <%= pluralize(item.bids.count, 'Bid') %> </small> 
+    <%= pluralize(item.bids.count, 'Bid') %> 
 
     <% if current_user %> 
       <% if item.top_bid_me?(current_user.id) %>

@@ -16,7 +16,9 @@
           <div class="row">
             <div class="span2"><%= image_tag(item.find_thumb_photo_url) %></div>
             <div class="title-size span5">
-              <h4><%= item.title %></br>    <i>Start bid:</i>$<%= number_with_precision(item.top_bid_amount, :precision => 0) %></h4>
+              <h4><%= item.title %></br>    
+                  <i>Start bid:</i>$<%= number_with_precision(item.top_bid_amount, :precision => 0) %>
+              </h4>
               <p><%= item.description %></p>  
             </div>
             <div class="span3 offset2">
