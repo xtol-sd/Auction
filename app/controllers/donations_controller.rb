@@ -15,6 +15,8 @@ class DonationsController < ApplicationController
   # GET /donations/1
   # GET /donations/1.json
   def show
+    @event = Event.find_by_current(true)
+    @item = Item.find(params[:id])
     @donation = Donation.find(params[:id])
 
     respond_to do |format|

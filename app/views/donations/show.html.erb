@@ -1,15 +1,28 @@
-<p id="notice"><%= notice %></p>
+<h1>
+  <%= @event.name %>
+</h1>  
 
-<p>
-  <b>User:</b>
-  <%= @donation.user_id %>
-</p>
+<%= render 'shared/count_down_timer' %>
+<%= render 'shared/auction_end_info' %>
+</br>
 
-<p>
-  <b>Item:</b>
-  <%= @donation.item_id %>
-</p>
+<div class="row">
+  <div class="span3">
+    <%= image_tag(@item.find_photo_url) %>
+  </div>
+  <div class="span5">
+    <h4><%= @item.title.capitalize %></h4>
+    Start Bid: $<%= @item.start_bid %></br>
+    Description: <%= @item.description %>
+  </div>
+  <div class="span1"> 
+  </div>
+  <div class="span3">
+  	<h4>Administrator Comment:</h4></br>
+    <%= @donation.comment.capitalize %>
+  </div>
+</div>      
+<hr />
+</div>
 
-
-<%= link_to 'Edit', edit_donation_path(@donation) %> |
 <%= link_to 'Back', donations_path %>

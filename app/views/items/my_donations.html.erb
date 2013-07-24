@@ -30,11 +30,12 @@
           <div class="span1"></div>
         <div class="span3">
           <% if donation.status == 0 %>
-            <div class="pending">Pending</div></br>
+            <div class="approved">Pending</div></br>
           <% elsif donation.status == 1 %>
             <div class="approved">Approved</div></br>
           <% elsif donation.status == 2 %>
-            <div class="rejected">Rejected</div></br>
+            <div class="rejected">Donation not approved</div></br>
+            <p>Please see administrator <%= link_to "comments", donation_path(item.donation) %>.</p>
           <% end %>
           <% if !event_over?(item.event) %>
             <% if item.bids.empty? %>
