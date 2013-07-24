@@ -1,6 +1,4 @@
-
 <h1> My Donations </h1>
-
 
 <%= render 'shared/count_down_timer' %>
 <% if !event_over?(@event) %> 
@@ -21,16 +19,23 @@
   <% end %>
 <% else %>
   <% @items.each do |item| %>
-    <% @donations.each do |donation| %>
+    <% @donations.each do |donation| %>    
       <% if donation.item_id == item.id %>
         <div class="row">
           <div class="span2"><%= image_tag(item.find_thumb_photo_url) %></div>
           <div class="title-size span6">
             <h4><%= item.title %></h4>
-            <p><%= item.description %></p>  
+            <p><%= item.description %></p>
           </div>
           <div class="span1"></div>
         <div class="span3">
+          <% if donation.status == 0 %>
+            <div class="pending">Pending</div></br>
+          <% elsif donation.status == 1 %>
+            <div class="approved">Approved</div></br>
+          <% elsif donation.status == 2 %>
+            <div class="rejected">Rejected</div></br>
+          <% end %>
           <% if !event_over?(item.event) %>
             <% if item.bids.empty? %>
               <i>Start bid:</i>$<%= number_with_precision(item.top_bid_amount, :precision => 0) %>

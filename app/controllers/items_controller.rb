@@ -70,7 +70,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to _my_donations_path, notice: 'Item was successfully donated.' }
+        format.html { redirect_to _my_donations_path, notice: 'Item was submitted for approval.' }
         format.json { render json: @item, status: :created, location: @item }
       else
         format.html { render action: "new" }
