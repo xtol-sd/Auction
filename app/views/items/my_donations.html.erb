@@ -53,9 +53,10 @@
             <div class="rejected">Donation not approved</div></br>
             <h4><i>Please see administrator <%= link_to "comments", donation_path(item.donation) %>.</i></h4>
           <% end %>
-   
         </div>
-        <div class="span12"><%= link_to 'Edit item', edit_event_item_path(@event, item) %></div> 
+        <% if !event_over?(@event) && donation.status == 0 %>
+        <div class="span12"><%= link_to 'Edit item', edit_event_item_path(@event, item) %></div>
+        <% end %>
       </div>
       <hr />        
      <% end %>
