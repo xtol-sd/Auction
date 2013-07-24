@@ -1,6 +1,13 @@
 class DonationsController < ApplicationController
   # GET /donations
   # GET /donations.json
+
+  def update_status_date
+      return unless status == '0'
+      self.status_created_at = Time.now
+      self.save!
+  end
+
   def index
     @donations = Donation.all
     @event = Event.find_by_current(true)
@@ -71,6 +78,7 @@ class DonationsController < ApplicationController
         format.json { render json: @donation.errors, status: :unprocessable_entity }
       end
     end
+    after_update :update_status_date
   end
 
   # DELETE /donations/1

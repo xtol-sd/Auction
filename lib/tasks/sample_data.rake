@@ -155,7 +155,8 @@ namespace :db do
         :status => "1",
         :user_id => "3", #seller user id
         :item_id => s,
-        :hidden => 0
+        :hidden => 0,
+        :status_created_at => DateTime.now - (rand(1..3)).day
       )
     end
 

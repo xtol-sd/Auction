@@ -25,13 +25,16 @@
               <% if !event_over?(item.event) %>
                 <% if donation.status == 0 %>
                   <%= render "/shared/donation_form", :donation => donation %>
+                  <div>This item was submitted on: <%= item.created_at.strftime('%b %d, %Y') %></div> 
                 <% elsif donation.status == 1 %>
                   <div class="approved">Approved</div>
                   <%= render "/shared/hide_record_form", :donation => donation %>
+                  <div>This item was approved on: <%= item.donation.status_created_at.strftime('%b %d, %Y') %></div> 
                 <% elsif donation.status == 2 %>
                   <div class="rejected">Rejected</div></br>
-                  <div>Comment: <%= donation.comment %></div>
-                <% end %>
+                  <div>Comment: <%= donation.comment %></div></br>
+                  <div>This item was rejected on: <%= item.donation.status_created_at.strftime('%b %d, %Y') %></div> 
+                <% end %>           
               <% end %>  
             </div>
           </div>
