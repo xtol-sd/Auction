@@ -47,8 +47,10 @@
         <div class="span3">
           <% if donation.status == 0 %>
             <div class="approved">Pending Approval</div></br>
+            <div>This item was submitted on: <%= item.created_at.strftime('%b %d, %Y') %></div> 
           <% elsif donation.status == 1 %>
             <div class="approved">Approved</div></br>
+            <div>This item was approved on: <%= item.donation.status_created_at.strftime('%b %d, %Y') %></div> 
           <% elsif donation.status == 2 %>
             <div class="rejected">Donation not approved</div></br>
             <h4><i>Please see administrator <%= link_to "comments", donation_path(item.donation) %>.</i></h4>
