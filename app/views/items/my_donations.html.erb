@@ -22,9 +22,11 @@
     <% @donations.each do |donation| %>    
       <% if donation.item_id == item.id %>
         <div class="row">
-          <div class="span2"><%= image_tag(item.find_thumb_photo_url) %></div>
+          <div class="span2">
+            <%= link_to image_tag(item.find_thumb_photo_url), edit_event_item_path(@event, item) %>  
+          </div>
           <div class="title-size span6">
-            <h4><%= item.title %></h4>
+            <h4><%= link_to item.title, edit_event_item_path(@event, item) %></h4>
             <p><%= item.description %></p>
           </div>
           <div class="span1"></div>
@@ -50,8 +52,9 @@
               <span class = "bid_amount"><i>This item sold for: </i>$<%= number_with_precision(item.top_bid_amount, :precision => 0) %>
               </span>
             <% end %>
-          <% end %>  
+          <% end %>   
         </div>
+        <div class="span12"><%= link_to 'Edit item', edit_event_item_path(@event, item) %></div> 
       </div>
       <hr />        
      <% end %>
