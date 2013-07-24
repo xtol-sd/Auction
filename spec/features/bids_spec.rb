@@ -38,15 +38,15 @@ describe "Bids" do
           end
         end
 
-        # describe "with invalid information" do
-        #  before do
-        #    fill_in "bid_bid_amount", with: '124'
-        #    click_button "Bid"
-        #   end
-        #  it "should not create a bid" do
-        #    page.should have_content "Please review the problems below:"
-        #   end
-        # end
+         describe "with invalid information" do
+          before do
+            fill_in "bid_bid_amount", with: '124'
+            click_button "Bid"
+          end
+         it "should not create a bid" do
+           page.should have_content "Please review the problems below:"
+          end
+        end
       end
       
       describe "when the event is finished" do
