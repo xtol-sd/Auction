@@ -9,7 +9,7 @@
   <% else %>
     <% @items.each do |item| %>
       <% @donations.each do |donation| %>
-        <% if donation.item_id == item.id %>
+        <% if donation.item_id == item.id && donation.hidden != true %>
           <div class="row">
             <div class="span2"><%= image_tag(item.find_thumb_photo_url) %></div>
             <div class="title-size span5">
@@ -22,13 +22,14 @@
                   <%= render "/shared/donation_form", :donation => donation %>
                 <% elsif donation.status == 1 %>
                   <div class="approved">Approved</div>
+                  <%= render "/shared/hide_record_form", :donation => donation %>
                 <% elsif donation.status == 2 %>
                   <div class="rejected">Rejected</div></br>
                   <div>Comment: <%= donation.comment %></div>
                 <% end %>
               <% end %>  
             </div>
-        </div>
+          </div>
         <hr />        
        <% end %>
       <% end %>

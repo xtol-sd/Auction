@@ -154,7 +154,8 @@ namespace :db do
       Donation.create!(
         :status => "1",
         :user_id => "3", #seller user id
-        :item_id => s
+        :item_id => s,
+        :hidden => 0
       )
     end
 
