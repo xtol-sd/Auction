@@ -41,7 +41,7 @@
                     <% elsif donation.status == 2 %>
                       <a class="reject"><div class="rejected">Rejected</div></a>
                       <div>Comment: <%= donation.comment %></div></br>
-                      </div></td>
+                      <div>This item was rejected on: <%= item.donation.status_created_at.strftime('%b %d, %Y') %></div></td>
                     <% end %>           
                   <% end %>                  
               </tr>

@@ -77,7 +77,6 @@ class DonationsController < ApplicationController
 
     respond_to do |format|
       if @donation.update_attributes(params[:donation])
-        @donation.update_status_date
         format.html { redirect_to donations_path, notice: 'Donation was successfully updated.' }
         format.json { head :no_content }
       else
