@@ -22,9 +22,9 @@
     <% if bidcheck == 0 %>
       <% if bid.item_id == item.id  %>
         <% bidcheck = 1 %>
-        <div class="row">
-          <div class="span2"><%= image_tag(item.find_thumb_photo_url) %></div>
-          <div class="title-size span7"><%= item.title %></div>
+        <div class="row"> 
+          <div class="span2"><%= link_to image_tag(item.find_thumb_photo_url), event_item_path(@event, item) %></div>
+          <div class="title-size span7"><%= link_to item.title, event_item_path(@event, item) %></div>
           <div class="span3">
             <% if !event_over?(item.event) %>
               <% if item.top_bid_me?(current_user.id) %>

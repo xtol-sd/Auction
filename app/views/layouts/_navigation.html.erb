@@ -1,7 +1,7 @@
 <% if user_signed_in? %>
   <nav>
     <ul class="nav">
-      <li><%=link_to image_tag('nccarf_logo.gif'), root_path %></li>
+      <li><%= image_tag('nccarf_logo.gif') %></li>
       <%= nav_link 'Auction Items', root_path %>
       <%= nav_link 'My Bids', _my_bids_path %>
       <%= nav_link 'My Donations', _my_donations_path %>
