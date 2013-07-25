@@ -3,7 +3,7 @@
     <% if item.bids.empty? %>
        <i><font color="gray">This item was not sold</font></i> 
     <% else %> 
-      <font color="gray"><i>Final Bid:</i></font></br>$<%= number_with_precision(item.top_bid_amount, :precision => 0) %>
+      <h4><font color="gray"><i>Final Bid:</i></font> $<%= number_with_precision(item.top_bid_amount, :precision => 0) %></h4>
       <% if current_user && item.top_bid_me?(current_user.id) %>
         <p><span class="label label-success"> You won! <i class="icon-thumbs-up"></i> </span></p>
       <% end %>              
@@ -11,14 +11,21 @@
 
   <% else%>
     <div class = "bid_amount">
-      $<%= number_with_precision(item.top_bid_amount || item.start_bid, :precision => 0) %>
-    </div>
-    <%= pluralize(item.bids.count, 'Bid') %> 
-
     <% if current_user %> 
       <% if item.top_bid_me?(current_user.id) %>
+        <h4><i>Your bid:</i> $<%= number_with_precision(item.top_bid_amount, :precision => 0) %></h4>
         <p><span class="label label-success"> Current Top Bidder <i class="icon-thumbs-up"></i> </span></p>
-      <% end %>
-      <%= render "/shared/bid_form", :item => item %>
+      <% else %>         
+        <% if !item.bids.empty? %>
+          <h4><i>Current bid:</i> $<%= number_with_precision(item.top_bid_amount, :precision => 0) %></h4>
+          <small><%= pluralize(item.bids.count, 'Bid') %></small>
+          <%= render "/shared/bid_form", :item => item %>
+        <% else %>
+          <h4><i>Start bid:</i> $<%= number_with_precision(item.top_bid_amount, :precision => 0) %></h4>
+          <small><%= pluralize(item.bids.count, 'Bid') %></small> 
+          <%= render "/shared/bid_form", :item => item %>
+        <% end %>    
+      <% end %> 
     <% end %>
+    </div>
   <% end %>  
