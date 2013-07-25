@@ -5,7 +5,6 @@
     <%= f.input :title %>
     <%= f.fields_for :photos do |p| %>
       <!-- logic here to show either existing image OR preview of selected image -->
-      <%= image_tag(@item.find_thumb_photo_url)%>
       <%= p.label "Change photo?" %>
       <%= p.file_field :image %>
       <%= p.hidden_field :item_id, :value => @item.id %>
