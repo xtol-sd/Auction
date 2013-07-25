@@ -149,16 +149,32 @@ namespace :db do
       :name => "Auction 2013"
     )
 
-    puts 'APPROVE ITEMS'
-    (1..5).each do |s|
+    puts 'ASSIGN PENDING/APPROVE/REJECT TO ITEMS'
+    (1..3).each do |s|
       Donation.create!(
-        :status => "1",
-        :user_id => "3", #seller user id
+        :status => 1, #approved
+        :user_id => User.find_by_name("seller").id, #seller user id
         :item_id => s,
         :hidden => 0,
         :status_created_at => DateTime.now - (rand(1..3)).day
       )
     end
+    
+    Donation.create!(
+        :status => 2, #rejected
+        :comment => "Please edit your text and image.  Then resubmit.",
+        :user_id => User.find_by_name("seller").id, #seller user id
+        :item_id => 4,
+        :hidden => 0,
+        :status_created_at => DateTime.now - (rand(1..3)).day
+      )
+
+    Donation.create!(
+        :status => 0, #pending
+        :user_id => User.find_by_name("seller").id, #seller user id
+        :item_id => 5,
+        :hidden => 0,
+      )
 
   end
 end
