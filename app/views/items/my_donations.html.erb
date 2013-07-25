@@ -23,10 +23,18 @@
       <% if donation.item_id == item.id %>
         <div class="row">
           <div class="span2">
-            <%= link_to image_tag(item.find_thumb_photo_url), event_item_path(@event, item) %>  
+            <% if donation.status == 1 %>
+              <%= link_to image_tag(item.find_thumb_photo_url), event_item_path(@event, item) %>  
+            <% else %>
+              <%= image_tag(item.find_thumb_photo_url) %>             
+            <% end %>
           </div>
           <div class="title-size span6">
-            <h4><%= link_to item.title, event_item_path(@event, item) %></h4>
+            <% if donation.status == 1 %>
+              <h4><%= link_to item.title, event_item_path(@event, item) %></h4>
+            <% else %>
+              <h4><%= item.title %></h4>
+            <% end %>
               <% if !event_over?(item.event) %>
                 <% if item.bids.empty? %>
                   <h4><i>Start bid:</i>$<%= number_with_precision(item.top_bid_amount, :precision => 0) %></h4>
