@@ -24,7 +24,9 @@
   	<h4>Administrator Comment:</h4></br>
     <h4><i><%= @donation.comment %></i></h4>
   </div>
-  <div class="span5"><h4><%= link_to 'Edit item', edit_event_item_path(@event, @item) %> and resubmit for approval</h4></div> 
+  <% if !event_over?(@event) %>
+    <div class="span5"><h4><%= link_to 'Edit item', edit_event_item_path(@event, @item) %> and resubmit for approval</h4></div>
+  <% end %>   
 </div>      
 <hr />
 </div>
