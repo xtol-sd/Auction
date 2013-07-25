@@ -4,13 +4,13 @@
   <script>
    function show(champ){
     $('tbody tr').hide()   
-    $('tbody tr:has(a.'+champ+')').show()
+    $('tbody tr:has(p.'+champ+')').show()
    }
   </script>
 
   <button onclick="show(&quot;pending&quot;)" class="btn btn-mini">Show Pending</button>
-  <button onclick="show(&quot;approve&quot;)" class="btn btn-mini">Show Approved</button>
-  <button onclick="show(&quot;reject&quot;)" class="btn btn-mini">Show Rejected</button>
+  <button onclick="show(&quot;approved&quot;)" class="btn btn-mini">Show Approved</button>
+  <button onclick="show(&quot;rejected&quot;)" class="btn btn-mini">Show Rejected</button>
   <button onclick="$('tbody tr').show()  " class="btn btn-mini">Show all</button></br></br>
 
   <% if @donations.blank? %>
@@ -31,15 +31,15 @@
                 <td class="span4">
                   <% if !event_over?(item.event) %>
                     <% if donation.status == 0 %>
-                      <a class="pending"><div class="approved">Pending</div></a>
+                      <p class="pending">Pending</p>
                       <%= render "/shared/donation_form", :donation => donation %>
                       <div>This item was submitted on: <%= item.created_at.strftime('%b %d, %Y') %></div></td> 
                     <% elsif donation.status == 1 %>
-                      <a class="approve"><div class="approved">Approved</div></a>
+                      <p class="approved">Approved</p>
                       <%= render "/shared/hide_record_form", :donation => donation %>
                       <div>This item was approved on: <%= item.donation.status_created_at.strftime('%b %d, %Y') %></div></td> 
                     <% elsif donation.status == 2 %>
-                      <a class="reject"><div class="rejected">Rejected</div></a>
+                      <p class="rejected">Rejected</p>
                       <div>Comment: <%= donation.comment %></div></br>
                       <div>This item was rejected on: <%= item.donation.status_created_at.strftime('%b %d, %Y') %></div></td>
                     <% end %>           
