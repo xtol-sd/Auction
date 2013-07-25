@@ -1,6 +1,18 @@
 class DonationsController < ApplicationController
   # GET /donations
   # GET /donations.json
+  def unhide_last 
+    Donation.last.update_attributes(:hidden => false)
+  end
+
+  def unhide_all
+    @donations = Donation.find(params[:donation_ids])
+    @donations.each do |donation|
+      donation.update_attributes!(:hidden => false)
+    end
+    flash[:notice] = "All records now shown!"
+    redirect_to donations_path
+  end
 
   def index
     @donations = Donation.all
