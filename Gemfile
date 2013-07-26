@@ -1,7 +1,9 @@
 source 'https://rubygems.org'
+ruby '1.9.3'
 gem 'rails', '3.2.13'
 gem "carrierwave"
 gem 'flatui-rails'
+
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -23,6 +25,7 @@ gem "rmagick"
 
 group :production do
   gem 'pg'
+  gem 'rails_12factor', '0.0.2'
 end
 
 group :development do
