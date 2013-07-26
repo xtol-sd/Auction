@@ -16,7 +16,6 @@ class Item < ActiveRecord::Base
   default_scope order("created_at DESC")  
 
   validates :start_bid, :numericality => {:only_integer => true, :message => "Please enter a whole number with no symbols"}
-
   validates_presence_of :title, :description, :start_bid
 
   #will need to change next two methods when more than one photo is implemented
