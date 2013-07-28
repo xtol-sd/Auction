@@ -36,7 +36,6 @@
                       <div>This item was submitted on: <%= item.created_at.strftime('%b %d, %Y') %></div></td> 
                     <% elsif donation.status == 1 %>
                       <p class="approved">Approved</p>
-                      <%= render "/shared/hide_record_form", :donation => donation %>
                       <div>This item was approved on: <%= item.donation.status_created_at.strftime('%b %d, %Y') %></div></td> 
                     <% elsif donation.status == 2 %>
                       <p class="rejected">Rejected</p>
