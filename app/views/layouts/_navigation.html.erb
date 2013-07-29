@@ -14,7 +14,7 @@
   <ul class="nav pull-right">
     <% if current_user.has_role? :admin %>
       <li>
-        <%= link_to 'Review Items', donations_path %> 
+        <%= nav_link 'Review Items', donations_path %> 
       </li>  
   <!--    <li>
         <%= link_to 'Admin', users_path %>

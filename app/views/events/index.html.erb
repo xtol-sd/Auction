@@ -1,6 +1,20 @@
 <%if current_user.has_role? :admin %>
-
+ 
 <h1>Admin Dashboard</h1>
+
+<nav class = "row">
+  <div class = "span12">
+  <ul class = "nav dashboard_tabs">
+      <%= nav_link 'Report1', dashboard_report1_path %> 
+      <%= nav_link 'Report2', dashboard_report2_path %>    
+  </ul>
+  </div>
+</nav>
+</br>
+
+<div class = "textarea">
+<!-- content -->
+</div>
 
 <table>
   <tr>
