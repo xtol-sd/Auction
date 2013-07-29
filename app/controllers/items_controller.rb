@@ -99,11 +99,12 @@ class ItemsController < ApplicationController
   # DELETE /items/1
   # DELETE /items/1.json
   def destroy
+    @event = Event.find_by_current(true)
     @item = Item.find(params[:id])
     @item.destroy
 
     respond_to do |format|
-      format.html { redirect_to items_url }
+      format.html { redirect_to _my_donations_path, notice: 'Item was successfully deleted.' }
       format.json { head :no_content }
     end
   end

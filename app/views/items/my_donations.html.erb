@@ -56,6 +56,7 @@
           <% if donation.status == 0 %>
             <div class="pending">Pending Approval</div></br>
             <div>This item was submitted on: <%= item.created_at.strftime('%b %d, %Y') %></div> 
+            <%= link_to 'Retract item', event_item_path(@event, item), method: :delete, data: { confirm: 'Are you sure?' } %>
           <% elsif donation.status == 1 %>
             <div class="approved">Approved</div></br>
             <div>This item was approved on: <%= item.donation.status_created_at.strftime('%b %d, %Y') %></div> 
