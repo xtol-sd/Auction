@@ -9,6 +9,9 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @events = Event.all
+    @donations = Donation.all
+    @event = Event.find_by_current(true)
+    @items = Item.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -64,7 +67,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.update_attributes(params[:event])
-        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
+        format.html { redirect_to events_path, notice: 'Event was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
