@@ -9,5 +9,5 @@
 #
 ADMIN_NAME: First User
 ADMIN_EMAIL: user@example.com
-ADMIN_PASSWORD: changeme
+ADMIN_PASSWORD: password
 ROLES: [admin, user, VIP]

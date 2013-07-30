@@ -145,8 +145,10 @@ namespace :db do
     puts 'FIRST EVENT'
     Event.create!(
       :current => true,
+      :start_datetime => DateTime.now - 1.week,
       :end_datetime => DateTime.now + 1.month,
-      :name => "Auction 2013"
+      :name => "Auction 2013",
+      :donations_startdate => DateTime.now - 1.month
     )
 
     puts 'ASSIGN PENDING/APPROVE/REJECT TO ITEMS'
