@@ -16,7 +16,7 @@ Auction::Application.routes.draw do
   get "my_donations" => "items#my_donations", :as => "_my_donations"
   get "admin_approval" => "donations#index", :as => "admin_approval"
   get "dashboard" => "events#index", :as => "dashboard"
-  get "dashboard/report1" => "events#report1", :as => "dashboard_report1"
-  get "dashboard/report2" => "events#report2", :as => "dashboard_report2"
+  get "dashboard/report1" => "events#dashboard_report1", :as => "dashboard_report1"
+  get "dashboard/report2" => "events#dashboard_report2", :as => "dashboard_report2"
   
 end

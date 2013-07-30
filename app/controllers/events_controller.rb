@@ -19,10 +19,12 @@ class EventsController < ApplicationController
     end
   end
 
-  def report1
+  def dashboard_report1
+    @event = Event.find_by_current(true)
   end
 
-  def report2
+  def dashboard_report2
+    @event = Event.find_by_current(true)
   end
 
   # GET /events/1
