@@ -25,6 +25,19 @@ h1 {
 	color: #649d1c;
 }
 
+h1 > a.h1_link {
+    color: #649d1c;
+    font-size: 32px;
+    font-weight: 900;
+    text-decoration: none;
+}  
+
+h1 > a.h1_link:hover {
+	text-decoration: none;
+	color: rgb(86, 151, 185);
+    background-color: transparent;
+}  
+
 th {
 	color: #643219;
 	text-align:left;
@@ -145,6 +158,8 @@ input[type=number]::-webkit-outer-spin-button {
 .dashboard_tabs > li.active > a {
     color: rgb(100, 157, 28);
 }
+
+
 
 
 

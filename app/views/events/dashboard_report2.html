@@ -1,6 +1,6 @@
 <%if current_user.has_role? :admin %>
  
-<h1>Admin Dashboard</h1>
+<h1><%= link_to 'Admin Dashboard', dashboard_path, :class => "h1_link" %></h1>
 
 <nav class = "row">
   <div class = "span12">
