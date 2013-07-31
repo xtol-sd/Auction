@@ -11,9 +11,28 @@
   </div>
 </nav>
 </br>
-
+<h4>STATUS REPORT</h4>
 <div class = "textarea">
-<!-- content -->
+<table class="table table-hover">
+<thead>
+	<tr>
+		<th colspan="2">Title</th>
+		<th colspan="2">Start Bid</th>
+		<th colspan="2">Donator Name</th>
+		<th colspan="2">Email Address</th>
+		<th colspan="2">Status</th>
+	</tr>
+</thead>
+<tbody>
+<% Event.new.status_report.each do |report| %>
+	<tr>
+		<% report.each do |key, value| %>
+		<td colspan="2"><%= value %></td>	
+		<% end %>
+	</tr>
+	<% end %>
+</tbody>
+</table>
 </div>
 
 <% end %>
