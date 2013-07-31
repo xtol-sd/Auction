@@ -12,14 +12,14 @@ class Event < ActiveRecord::Base
   end
 
   def status_report
-  select_all("select i.title, i.start_bid, u.name, u.email,
-    (CASE WHEN (d.status=0) THEN 'PENDING'
-    WHEN (d.status=1) THEN 'APPROVED'
-    WHEN (D.status=2) THEN 'REJECTED' END) as STATUS
-    from donations d
-    left outer join items i on i.id=d.item_id
-    left outer join users u on u.id=d.user_id
-    group by i.id")
+    select_all("select i.title, i.start_bid, u.name, u.email,
+      (CASE WHEN (d.status=0) THEN 'PENDING'
+      WHEN (d.status=1) THEN 'APPROVED'
+      WHEN (D.status=2) THEN 'REJECTED' END) as STATUS
+      from donations d
+      left outer join items i on i.id=d.item_id
+      left outer join users u on u.id=d.user_id
+      group by i.id, u.name")
   end
   
   def top_bid_report
