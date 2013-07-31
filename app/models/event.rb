@@ -18,8 +18,7 @@ class Event < ActiveRecord::Base
       WHEN (D.status=2) THEN 'REJECTED' END) as STATUS
       from donations d
       left outer join items i on i.id=d.item_id
-      left outer join users u on u.id=d.user_id
-      group by i.id, i.start_bid, u.name, u.email")
+      left outer join users u on u.id=d.user_id")
   end
   
   def top_bid_report
