@@ -19,7 +19,7 @@ class Event < ActiveRecord::Base
       from donations d
       left outer join items i on i.id=d.item_id
       left outer join users u on u.id=d.user_id
-      group by i.id, u.name")
+      group by i.id, i.start_bid, u.name, u.email")
   end
   
   def top_bid_report
