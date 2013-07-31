@@ -29,7 +29,8 @@ class Event < ActiveRecord::Base
     from items i
     left outer join bids b on i.id = b.item_id
     left outer join users u on u.id = b.user_id
-    where b.item_id = i.id")
+    where b.item_id = i.id
+    group by i.id, u.email, u.name")
   end
 
 end
