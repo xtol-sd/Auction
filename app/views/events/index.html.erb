@@ -1,49 +1,36 @@
 <%if current_user.has_role? :admin %>
  
-<h1>Admin Dashboard</h1>  
+<h1>Admin Dashboard</h1>
 
-<nav class = "row">
+<ul class="nav nav-pills">
+  <li class="active"><a href="#event_settings" data-toggle="tab">Manage Auction Settings</a></li>
+  <li><a href="#review_donations" data-toggle="tab">Review Donations</a></li>
+  <li><a href="#reports" data-toggle="tab">View Auction Reports</a></li>
+</ul>
+  
+<div class="tab-content">
+  <div class="tab-pane active" id="event_settings">
+    <%= render 'event_settings' %>
+  </div>
+  <div class="tab-pane" id="review_donations">
+    <%= render 'shared/review_donations' %>
+  </div>
+  <div class="tab-pane" id="reports">
+    <%= render 'shared/event_reports' %>
+  </div>
+</div>  
+
+<!-- <nav class = "row">
   <div class = "span12">
   <ul class = "nav dashboard_tabs">
-      <%= nav_link 'Report1', dashboard_report1_path %> 
-      <%= nav_link 'Report2', dashboard_report2_path %>    
+      <%#= nav_link 'Create Auction', new_event_path %> 
+      <%#= nav_link 'Review Items', donations_path %> 
+      <%#= nav_link 'Report1', dashboard_report1_path %> 
+      <%#= nav_link 'Report2', dashboard_report2_path %>    
   </ul>
   </div>
 </nav>
-</br>
-
-<div class = "textarea">
-<!-- content -->
-</div>
-
-<table>
-  <tr>
-    <th>Auction Name</th>
-    <th>Donations Start Date</th>
-    <th>Auction Start Date</th>
-    <th>Auction End Date</th>
-  </tr>
-
-<% @events.each do |event| %>
-  <tr>
-
-    <td><%= event.name %></td>
-    <td><%= event.donations_startdate.strftime("%B %d, %Y") %></td>
-    <td><%= event.start_datetime.strftime("%B %d, %Y") %></td>
-    <td><%= event.end_datetime.strftime("%B %d, %Y") %></td>
-    <td><%= link_to 'Show', event %></td>
-    <td><%= link_to 'Edit', edit_event_path(event) %></td>
-  <!--   <td><%= link_to 'Destroy', event, :method => :delete, data: { confirm: 'Are you sure you want to destroy this auction?' } %></td> -->
-    <td><%= render "current_form" %></td>
-  </tr>
-<% end %>
-</table>
-
-These will all be tabs to reports/other pages:
-<p><%= link_to "review items for this auction", donations_path %></p>
-<p><%= "Who won items during this auction" %></p>
-<p><%= "How much money the auction made" %></p>
-<p><%= "How much money are we being charged for photo data storage so far?" %></p>
+</br> -->
 
 <% else %>
  Only an admin may see this page.

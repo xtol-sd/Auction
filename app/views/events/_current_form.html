@@ -1,5 +1,5 @@
 <%= simple_form_for(@event) do |f| %>
   <%= f.error_notification %>
     <%= f.hidden_field :current, :value => true %>
-    <%= f.button :submit, "Make Current", :confirm => "Are you sure you want to designate this the current auction?  Donations can only be made to the current auction." %>
+    <%= f.button :submit, "Make Current", :hint => "Only one auction may be current at one time, and only the current auction may accept donations/bids.", :confirm => "Are you sure you want to designate this the current auction?  Donations/bids are only allowed for the current auction." %>
 <% end %>
