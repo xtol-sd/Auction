@@ -1682,7 +1682,7 @@ textarea[class*="span"] {
 .checkbox input,
 .radio input {
   outline: none !important;
-  display: none;
+  /*display: none;*/
 }
 .checkbox .icons,
 .radio .icons {

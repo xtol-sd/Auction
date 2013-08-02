@@ -3,7 +3,8 @@
    We will begin accepting donations for <%= @event.name %> 
    on <%= @event.donations_startdate.strftime('%b %d, %Y') %>.</br>
    Please visit then to donate.</br>
-   <%= @event.name %> will open for bidding on <%= @event.start_datetime.strftime('%b %d, %Y') %>.  Thank you.
+   <%= @event.name %> will open for bidding on <%= @event.start_datetime.strftime('%b %d, %Y') %>.  
+   Thank you.
 <% elsif @event && @event.donations_startdate <= DateTime.now && @event.end_datetime >= DateTime.now %>
    <h1> <%= @event.name %></h1>
     <%= render 'shared/count_down_timer' %>
@@ -37,5 +38,3 @@
   <% elsif @event.nil? %>
     Thank you for visiting our site.  No auctions are scheduled at this time.  Please check back again later.
   <% end %> 
-
-Content for case: event exists, and donations are allowed:

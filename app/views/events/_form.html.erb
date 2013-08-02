@@ -6,7 +6,7 @@
     <%= f.input :donations_startdate, :label => "Donations Start Date" %></br></br>
     <%= f.input :start_datetime, :label => "Auction Start Date" %></br></br>
     <%= f.input :end_datetime, :label => "Auction End Date" %>
-    <%= f.hidden_field :current, :value => true %> 
+    <%= f.input :current, :label => "Current Auction?", :as => :radio_buttons %> 
   </div>
 
   <div class="form-actions">
