@@ -5,9 +5,9 @@
       <%= nav_link 'Auction Items', root_path %>
       <%= nav_link 'My Bids', _my_bids_path %>
       <%= nav_link 'My Donations', _my_donations_path %>
-      <% if !event_over?(Event.find_by_current(true)) %> 
+      <% if Event.find_by_current(true) %>
         <%= nav_link 'Donate Item', new_event_item_path(Event.find_by_current(true)) %>
-      <% end %>
+      <% end %>  
     </ul>
   </nav>  
 

@@ -11,13 +11,11 @@
     <div class = "left-indent">
       <p>Donations accepted as of <%= event.donations_startdate.strftime("%B %d, %Y") %></p>
       <p><%= link_to 'Edit Auction', edit_event_path(event) %> | 
-       <%= link_to 'Destroy Auction', event, :method => :delete, data: { confirm: 'Choosing to destroy this auction will destroy all items, donations, bids, etc. associated with this auction. This cannot be reversed. Are you sure you want to destroy this auction?' } %></p>
-      <% if event.current != true %>
-        <%= render "current_form" %>
-      <% end %>  
+       <%= link_to 'Destroy Auction', event, :method => :delete, data: { confirm: 'Choosing to destroy this auction will destroy all items, donations, bids, etc. associated with this auction. This cannot be reversed. Are you sure you want to destroy this auction?' } %> |
+       <%= link_to 'Make Auction Current', designate_current_path, :controller => "events", :action => "designate_current", :id => event, :data => { confirm: 'Only one auction may be current, and only the current auction can accept donations/bids. Are you sure you want to designate this auction as current?'} %></p>
     </div>
     <hr/>
 <% end %>    
 
-
+<!--link_to "Profile", :controller => "profiles", :action => "show", :id => @profile -->
      
