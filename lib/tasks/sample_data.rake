@@ -38,7 +38,7 @@ namespace :db do
 
     #Sample Users
     puts "SAMPLE USERS"
-    20.times do
+    100.times do
       User.create!(name: Faker::Name.name,
                    email: Faker::Internet.email,
                    password: "password",
