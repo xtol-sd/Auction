@@ -20,7 +20,7 @@ class EventsController < ApplicationController
   def index
     @events = Event.all
     @donations = Donation.all
-    @event = Event.find_by_current(true)
+    @event = Event.find_by_id(params[:id])
     @items = Item.all
 
     respond_to do |format|
@@ -83,15 +83,8 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
 
-    if @event.update_attributes(params[:current])
-      other_events = Event.all.reject{|event| event.id != @event.id}
-      other_events.each do |event|
-        if event.current == true
-          event.update_attributes(:current => false)
-        end
-      end 
-      redirect_to events_path, notice: 'Event was successfully updated.' 
-    elsif @event.update_attributes(params[:event])
+    if @event.update_attributes(params[:event])
+      Event.update_all(["current = ?", false], ['id <> ?', @event.id]) #Should update all where id is not event.id
       redirect_to events_path, notice: 'Event was successfully updated.'
     else
       render action: "edit" 

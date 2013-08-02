@@ -1,6 +1,8 @@
 <%= link_to 'Create New Auction', new_event_path, :id => "create_auction" %></br></br>
 
 <% @events.each do |event| %>
+<div class="row">
+  <div class="span10">
     <p><b><%= event.name.capitalize %></b> | <%= event.start_datetime.strftime("%B %d, %Y")%>
     to <%= event.end_datetime.strftime("%B %d, %Y") %>
     <% if event.current == true %>
@@ -12,7 +14,16 @@
       <p>Donations accepted as of <%= event.donations_startdate.strftime("%B %d, %Y") %></p>
       <p><%= link_to 'Edit Auction', edit_event_path(event) %> | 
        <%= link_to 'Destroy Auction', event, :method => :delete, data: { confirm: 'Choosing to destroy this auction will destroy all items, donations, bids, etc. associated with this auction. This cannot be reversed. Are you sure you want to destroy this auction?' } %>
-    </div>
+     </div>
+   </div>
+      <div class="span2">
+        <%= simple_form_for(event) do |f| %>
+          <%= f.error_notification %>
+            <%= f.input :current, :label => "Current Auction?" %> 
+            <%= f.button :submit %>
+        <% end %>
+      </div>
+  </div>
     <hr/>
 <% end %>    
 
