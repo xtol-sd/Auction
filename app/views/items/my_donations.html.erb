@@ -63,6 +63,7 @@
           <% elsif donation.status == 2 %>
             <div class="rejected">Approval Denied</div></br>
             <h4><i>Please see administrator <%= link_to "comments", donation_path(item.donation) %>.</i></h4>
+            <%= link_to 'Retract item', event_item_path(@event, item), method: :delete, data: { confirm: 'Are you sure?' } %>
           <% end %>
         </div>
         <% if !event_over?(@event) && donation.status == 0 %>
