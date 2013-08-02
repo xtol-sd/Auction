@@ -1,31 +1,39 @@
+<% if @event && @event.donations_startdate > DateTime.now %>
+ <p>Content for case where: event exists, but donation startdate is in future.</p>
+<% elsif @event && @event.donations_startdate <= DateTime.now && @event.end_datetime >= DateTime.now %>
+   <p>Content for case where: event exists, donation startdate is current or past and event is not over</p>
+   <h1> <%= @event.name %></h1>
 
-<%= link_to("End Auction", edit_event_path(@event), :class => 'btn btn-mini offset10') %>
+    <%= render 'shared/count_down_timer' %>
+    <% if !event_over?(@event) %> 
+      <%= render 'shared/refresh_pages' %>
+    <% end %>
+    <%= render 'shared/auction_end_info' %>
 
-<h1> <%= @event.name %></h1>
-
-<%= render 'shared/count_down_timer' %>
-<% if !event_over?(@event) %> 
-  <%= render 'shared/refresh_pages' %>
-<% end %>
-<%= render 'shared/auction_end_info' %>
-
-<% @items.each do |item| %>
-  <% @donations.each do |donation| %>
-    <% if donation.item_id == item.id %>
-      <% if donation.status == 1 %>
-        <div class="row">
-          <div class="span2">
-            <%= image_tag(item.find_thumb_photo_url) %>
-          </div>
-          <div class="title-link span7">
-            <%= link_to item.title, event_item_path(@event, item) %>
-          </div>
-          <div class="span3">
-          <%= render "/shared/item_bid_information", :item => item %>
-          </div>      
-        </div>
-        <hr/>
+    <% @items.each do |item| %>
+      <% @donations.each do |donation| %>
+        <% if donation.item_id == item.id %>
+          <% if donation.status == 1 %>
+            <div class="row">
+              <div class="span2">
+                <%= image_tag(item.find_thumb_photo_url) %>
+              </div>
+              <div class="title-link span7">
+                <%= link_to item.title, event_item_path(@event, item) %>
+              </div>
+              <div class="span3">
+              <%= render "/shared/item_bid_information", :item => item %>
+              </div>      
+            </div>
+            <hr/>
+          <% end %>
+        <% end %>
       <% end %>
     <% end %>
-  <% end %>
-<% end %>
+  <% elsif @event && @event.end_datetime < DateTime.now %> 
+   <p>Content for case where: event exists, event is over</p>
+  <% elsif @event.nil? %>
+   <p>Content for case where: event does not exist</p>
+  <% end %> 
+
+Content for case: event exists, and donations are allowed:

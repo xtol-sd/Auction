@@ -13,7 +13,11 @@ module ApplicationHelper
   end
 
   def event_over?(event)
-    event.end_datetime < DateTime.now
+    if event
+      event.end_datetime < DateTime.now
+    else
+      false
+    end    
   end  
 
   def nav_link(link_text, link_path)

@@ -1,7 +1,14 @@
+
+
+<% event_id = event.id %>
+<% Event.update_all :current => false %>
+<% Event.find_by_id(event_id).update_attributes(:current => true) %>
+
+
 <%= simple_form_for(@event) do |f| %>
   <%= f.error_notification %>
     <%= f.hidden_field :current, :value => true %>
-    <p><%= f.button :submit, "Make This Auction Current", :confirm => "Are you sure you want to designate this the current auction?  Donations/bids are only allowed for the current auction." %>
+    <p><%= f.button :submit, "Make This Auction Current", :confirm => "Are you sure you want to designate this the current auction? Donations/bids are only allowed for the current auction." %>
     <i>Only one auction may be designated current. Donations/bids are only allowed for the current auction.</i></p>
     </hr>
 <% end %>

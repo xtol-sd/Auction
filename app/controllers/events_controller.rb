@@ -3,7 +3,17 @@ class EventsController < ApplicationController
   def end_auction
     event = Event.find(1).update_attribute(:end_datetime => "2013:05:05 16:10:00 UTC")
     event.save
-  end    
+  end  
+
+  def designate_current
+    if !Event.all.nil?
+      @event = Event.find_by_current(true)
+      event_id = @event.id 
+      Event.update_all :current => false 
+      Event.find_by_id(event_id).update_attributes(:current => true) 
+      Event.find_by_id(event_id).save!
+    end
+  end   
 
   # GET /events
   # GET /events.json
@@ -73,14 +83,18 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
 
-    respond_to do |format|
-      if @event.update_attributes(params[:event])
-        format.html { redirect_to events_path, notice: 'Event was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
+    if @event.update_attributes(params[:current])
+      other_events = Event.all.reject{|event| event.id != @event.id}
+      other_events.each do |event|
+        if event.current == true
+          event.update_attributes(:current => false)
+        end
+      end 
+      redirect_to events_path, notice: 'Event was successfully updated.' 
+    elsif @event.update_attributes(params[:event])
+      redirect_to events_path, notice: 'Event was successfully updated.'
+    else
+      render action: "edit" 
     end
   end
 
