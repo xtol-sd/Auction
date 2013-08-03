@@ -1,11 +1,12 @@
-<% if @event && @event.donations_startdate > DateTime.now %>
-   <p>Thank you for visiting our site.</br>
-   We will begin accepting donations for <%= @event.name %> 
-   on <%= @event.donations_startdate.strftime('%b %d, %Y') %>.</br>
-   Please visit then to donate.</br>
-   <%= @event.name %> will open for bidding on <%= @event.start_datetime.strftime('%b %d, %Y') %>.  
-   Thank you.</p>
-<% elsif @event && @event.donations_startdate <= DateTime.now && @event.end_datetime >= DateTime.now %>
+<% if @event %>
+  <% if @event.donations_startdate > DateTime.now %>
+     <p>Thank you for visiting our site.</br>
+     We will begin accepting donations for <%= @event.name %> 
+     on <%= @event.donations_startdate.strftime('%b %d, %Y') %>.</br>
+     Please visit then to donate.</br>
+     <%= @event.name %> will open for bidding on <%= @event.start_datetime.strftime('%b %d, %Y') %>.  
+     Thank you.</p>
+  <% elsif @event.donations_startdate <= DateTime.now && @event.end_datetime >= DateTime.now %>
    <h1> <%= @event.name %></h1>
     <%= render 'shared/count_down_timer' %>
     <% if !event_over?(@event) %> 
@@ -33,7 +34,7 @@
         <% end %>
       <% end %>
     <% end %>
-  <% elsif @event && @event.end_datetime < DateTime.now %> 
+  <% elsif @event.end_datetime < DateTime.now %> 
     <h4><i><%= @event.name.capitalize %> ended on <%= @event.end_datetime.strftime('%b %d, %Y') %> </i></h4></br>
       <h4>NCCARF Auction Schedule:</h4></br>
     <div class="span10 offset 5">
@@ -44,20 +45,20 @@
         <% end %>  
       <% end %>
     </div>  
-  <% elsif @event.nil? %>
-    </br>
-    <h4><i>Thank you for visiting our site.  No auctions are being held at this time.</h4></i>
-    <div class="span10 offset 5">
-      <h4>NCCARF Auction(s) Scheduled:</h4></br>
-      <% if @future_events %>
-        <% @future_events.each do |future_event| %>
-          <b><%= future_event.name %>:</b>(<%= future_event.start_datetime.strftime('%b %d, %Y') %> to <%=   future_event.end_datetime.strftime('%b %d, %Y') %>)</br>  
-            Donations will be accepted for this auction after <%= future_event.donations_startdate.strftime('%b %d, %Y') %></br></br>
-        <% end %>  
-      <% end %>
-    </div>
-    <div class = "span 12">
-      <h4><i><p>Please check back again later or <%= link_to 'contact us' %> for more information.</p></i></h4>    
-    </div>  
-
-  <% end %> 
+  <% end %>
+<% else %>
+  </br>
+  <h4><i>Thank you for visiting our site.  No auctions are being held at this time.</h4></i>
+  <div class="span10 offset 5">
+    <h4>NCCARF Auction(s) Scheduled:</h4></br>
+    <% if @future_events %>
+      <% @future_events.each do |future_event| %>
+        <b><%= future_event.name %>:</b>(<%= future_event.start_datetime.strftime('%b %d, %Y') %> to <%=   future_event.end_datetime.strftime('%b %d, %Y') %>)</br>  
+          Donations will be accepted for this auction after <%= future_event.donations_startdate.strftime('%b %d, %Y') %></br></br>
+      <% end %>  
+    <% end %>
+  </div>
+  <div class = "span 12">
+    <h4><i><p>Please check back again later or <%= link_to 'contact us' %> for more information.</p></i></h4>    
+  </div>  
+<% end %> 
