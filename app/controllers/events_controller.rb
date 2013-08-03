@@ -5,6 +5,7 @@ class EventsController < ApplicationController
     @donations = Donation.all
     @event = Event.find_by_id(params[:id])
     @items = Item.all
+    @users = User.all
 
     respond_to do |format|
       format.html # index.html.erb
