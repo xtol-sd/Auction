@@ -1,45 +1,33 @@
 <%if current_user.has_role? :admin %>
 
-<div class="row">
-  <div class="span5"><h1>Admin Dashboard</h1></div>
-  <div class="offset4 span3">
-    <%= link_to 'Create New Auction', new_event_path, :id => "create_auction", :class => "btn btn-mini btn-primary" %></br></br>
-  </div>
-</div> 
+  <div class="row">
+    <div class="span5"><h1>Admin Dashboard</h1></div>
+    <div class="offset4 span3">
+      <%= link_to 'Create New Auction', new_event_path, :id => "create_auction", :class => "btn btn-mini btn-primary" %></br></br>
+    </div>
+  </div> 
 
-<ul class="nav nav-pills">
-  <li class="active"><a href="#event_settings" data-toggle="tab">Manage Auctions</a></li>
-  <li><a href="#review_donations" data-toggle="tab">
-    <% if Event.find_by_current(true) %>
-      Approve <%= Event.find_by_current(true).name.capitalize %> Items</a></li>
-    <% end %>
-  <li><a href="#reports" data-toggle="tab">View Auction Reports</a></li>
-</ul>
-  
-<div class="tab-content">
-  <div class="tab-pane active" id="event_settings">
-    <%= render 'event_settings' %>
-  </div>
-  <div class="tab-pane" id="review_donations">
-    <%= render 'shared/review_donations' %>
-  </div>
-  <div class="tab-pane" id="reports">
-    <%= render 'shared/event_reports' %>
-  </div>
-</div>  
-
-<!-- <nav class = "row">
-  <div class = "span12">
-  <ul class = "nav dashboard_tabs">
-      <%#= nav_link 'Create Auction', new_event_path %> 
-      <%#= nav_link 'Review Items', donations_path %> 
-      <%#= nav_link 'Report1', dashboard_report1_path %> 
-      <%#= nav_link 'Report2', dashboard_report2_path %>    
+  <ul class="nav nav-pills">
+    <li class="active"><a href="#event_settings" data-toggle="tab">Manage Auctions</a></li>
+    <li><a href="#review_donations" data-toggle="tab">
+      <% if Event.find_by_current(true) %>
+        Approve <%= Event.find_by_current(true).name.capitalize %> Items</a></li>
+      <% end %>
+    <li><a href="#reports" data-toggle="tab">View Auction Reports</a></li>
   </ul>
-  </div>
-</nav>
-</br> -->
+    
+  <div class="tab-content">
+    <div class="tab-pane active" id="event_settings">
+      <%= render 'event_settings' %>
+    </div>
+    <div class="tab-pane" id="review_donations">
+      <%= render 'shared/review_donations' %>
+    </div>
+    <div class="tab-pane" id="reports">
+      <%= render 'shared/event_reports' %>
+    </div>
+  </div>  
 
 <% else %>
- Only an admin may see this page.
+  Only an admin may see this page.
 <% end %>
