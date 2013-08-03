@@ -1,9 +1,14 @@
 <%if current_user.has_role? :admin %>
- 
-<h1>Admin Dashboard</h1>
+
+<div class="row">
+  <div class="span5"><h1>Admin Dashboard</h1></div>
+  <div class="offset4 span3">
+    <%= link_to 'Create New Auction', new_event_path, :id => "create_auction", :class => "btn btn-mini btn-primary" %></br></br>
+  </div>
+</div> 
 
 <ul class="nav nav-pills">
-  <li class="active"><a href="#event_settings" data-toggle="tab">Manage Auction Settings</a></li>
+  <li class="active"><a href="#event_settings" data-toggle="tab">Manage Auctions</a></li>
   <li><a href="#review_donations" data-toggle="tab">Review Donations</a></li>
   <li><a href="#reports" data-toggle="tab">View Auction Reports</a></li>
 </ul>
