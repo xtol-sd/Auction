@@ -5,16 +5,6 @@ class EventsController < ApplicationController
     event.save
   end  
 
-  def designate_current
-    if !Event.all.nil?
-      @event = Event.find_by_current(true)
-      event_id = @event.id 
-      Event.update_all :current => false 
-      Event.find_by_id(event_id).update_attributes(:current => true) 
-      Event.find_by_id(event_id).save!
-    end
-  end   
-
   # GET /events
   # GET /events.json
   def index
@@ -41,7 +31,10 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     @event = Event.find_by_current(true)
-    @items = @event.items.all
+    @future_events = Event.where(["donations_startdate >=?", DateTime.now])
+    if @event
+      @items = @event.items.all
+    end
     @bid = Bid.new
     @donations = Donation.all
   end

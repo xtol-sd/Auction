@@ -2,7 +2,7 @@
 
 <% @events.each do |event| %>
 <div class="row">
-  <div class="span10">
+  <div class="span9">
     <p><b><%= event.name.capitalize %></b> | <%= event.start_datetime.strftime("%B %d, %Y")%>
     to <%= event.end_datetime.strftime("%B %d, %Y") %>
     <% if event.current == true %>
