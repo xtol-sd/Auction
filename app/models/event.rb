@@ -2,6 +2,16 @@ class Event < ActiveRecord::Base
   attr_accessible :end_datetime, :name, :start_datetime, :current, :donations_startdate
   has_many :items
 
+  validate :end_date_cannot_be_after_end_date
+
+  def end_date_cannot_be_after_end_date
+    if !end_datetime.nil? and start_datetime > end_datetime
+      errors.add(:start_datetime, "Donation start date can't be after auction end date")
+    elsif !end_datetime.nil? and donations_startdate > start_datetime
+      errors.add(:donations_startdate, "Donation start date can't be after auction start date")
+    end
+  end
+
 #need to test the item bid information partial for when the auction ends
   def finished?
   	end_datetime <= DateTime.now
