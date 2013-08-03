@@ -11,21 +11,9 @@ class ItemsController < ApplicationController
   def my_donations
      @items = Item.all
      @donations = Donation.find_all_by_user_id(current_user)
-     @event = Event.find_by_current(true)
-  
-  end
-  # GET /items
-  # GET /items.json
-  def index
-    @items = Item.all
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @items }
-    end
+     @event = Event.find_by_current(true) 
   end
 
-  # GET /items/1
-  # GET /items/1.json
   def show
     @item = Item.find(params[:id])
     @bid = Bid.new
@@ -37,8 +25,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  # GET /items/new
-  # GET /items/new.json
   def new
     @event = Event.find_by_current(true)
     @item = @event.items.build
@@ -53,20 +39,16 @@ class ItemsController < ApplicationController
     end
   end
 
-  # GET /items/1/edit
   def edit
     @event = Event.find_by_current(true)
     @item = Item.find(params[:id])
     @user = User.find(current_user)
   end
 
-  # POST /items
-  # POST /items.json
   def create
     @user = User.find(current_user)
     @event = Event.find(params[:event_id])
     @item = @event.items.build(params[:item])
-    #@item = Item.new(params[:item])
 
     respond_to do |format|
       if @item.save
@@ -79,8 +61,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  # PUT /items/1
-  # PUT /items/1.json
   def update
     @item = Item.find(params[:id])
     @event = Event.find_by_current(true)
@@ -96,8 +76,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  # DELETE /items/1
-  # DELETE /items/1.json
   def destroy
     @event = Event.find_by_current(true)
     @item = Item.find(params[:id])
@@ -108,5 +86,4 @@ class ItemsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
 end
