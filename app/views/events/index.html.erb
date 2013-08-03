@@ -9,7 +9,10 @@
 
 <ul class="nav nav-pills">
   <li class="active"><a href="#event_settings" data-toggle="tab">Manage Auctions</a></li>
-  <li><a href="#review_donations" data-toggle="tab">Review Donations</a></li>
+  <li><a href="#review_donations" data-toggle="tab">
+    <% if Event.find_by_current(true) %>
+      Approve <%= Event.find_by_current(true).name.capitalize %> Items</a></li>
+    <% end %>
   <li><a href="#reports" data-toggle="tab">View Auction Reports</a></li>
 </ul>
   
