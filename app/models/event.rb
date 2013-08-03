@@ -12,11 +12,6 @@ class Event < ActiveRecord::Base
     end
   end
 
-#need to test the item bid information partial for when the auction ends
-  def finished?
-  	end_datetime <= DateTime.now
-  end
-
   def select_all(report)
   	ActiveRecord::Base.connection.select_all(report)
   end

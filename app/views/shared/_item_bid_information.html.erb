@@ -1,5 +1,5 @@
 
-  <% if @event.finished?%>  
+  <% if event_over?(@event) %>  
     <% if item.bids.empty? %>
        <i><font color="gray">This item was not sold</font></i> 
     <% else %> 
