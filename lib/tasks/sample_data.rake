@@ -151,6 +151,15 @@ namespace :db do
       :donations_startdate => DateTime.now - 1.month
     )
 
+    Event.create!(
+      :current => false,
+      :start_datetime => DateTime.now + 1.year,
+      :end_datetime => DateTime.now + 1.year + 1.month,
+      :name => "Auction 2014",
+      :donations_startdate => DateTime.now + 1.year - 1.month
+    )
+
+
     puts 'ASSIGN PENDING/APPROVE/REJECT TO ITEMS'
     (1..3).each do |s|
       Donation.create!(
