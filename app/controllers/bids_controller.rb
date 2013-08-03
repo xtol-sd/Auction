@@ -1,23 +1,5 @@
 class BidsController < ApplicationController
 
-  # def index
-  #   @bids = Bid.all
-
-  #   respond_to do |format|
-  #     format.html # index.html.erb
-  #     format.json { render json: @bids }
-  #   end
-  # end
-
-  # def show
-  #   @bid = Bid.find(params[:id])
-
-  #   respond_to do |format|
-  #     format.html # show.html.erb
-  #     format.json { render json: @bid }
-  #   end
-  # end
-
   def new
     @bid = Bid.new
     @user = User.find(current_user)
