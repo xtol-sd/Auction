@@ -1,13 +1,19 @@
 <%= simple_form_for ([@event, @item]) do |f| %>
   <%= f.error_notification %>
-       
-  <%= f.input :title %>
-  <%= f.fields_for :photos do |p| %>
-    <!-- logic here to show either existing image OR preview of selected image -->
-    <%= p.label "Upload photo?" %>
-    <%= p.file_field :image %>
+  
+  <%= direct_upload_form_for @uploader do |p| %>
+    <p><%= p.file_field :image %></p>
     <%= p.hidden_field :item_id, :value => @item.id  %>
+    <p><%= p.submit "Upload Image" %></p>
   <% end %>
+
+  <!--<%#= f.input :title %>
+  <%#= f.fields_for :photos do |p| %>
+     logic here to show either existing image OR preview of selected image
+    <%#= p.label "Upload photo?" %>
+    <%#= p.file_field :image %>
+    <%#= p.hidden_field :item_id, :value => @item.id  %>
+  <%# end %> -->
 
   <%= f.input :description %>
   <div id="donate-dollar-sign">$</div>
