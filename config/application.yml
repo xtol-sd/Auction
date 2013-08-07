@@ -11,3 +11,8 @@ ADMIN_NAME: First User
 ADMIN_EMAIL: user@example.com
 ADMIN_PASSWORD: password
 ROLES: [admin, user, VIP]
+
+AWS_ACCESS_KEY_ID: AKIAJPVZMUND6DJCMFOA
+AWS_SECRET_ACCESS_KEY: Kt4WY3Nih2klei+ETaPnttmffF1zT+y6W9G+lkzJ
+S3_BUCKET_NAME: auction-app
+
