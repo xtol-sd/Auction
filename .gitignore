@@ -58,6 +58,7 @@ pickle-email-*.html
 # scm revert files
 **.orig
 
+
 # Mac finder artifacts
 .DS_Store
 
