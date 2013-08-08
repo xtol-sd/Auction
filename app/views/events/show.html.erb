@@ -6,7 +6,7 @@
      Please visit then to donate.</br>
      <%= @event.name %> will open for bidding on <%= @event.start_datetime.strftime('%b %d, %Y') %>.  
      Thank you.</p>
-  <% elsif @event.donations_startdate <= DateTime.now && @event.end_datetime >= DateTime.now %>
+  <% elsif @event.end_datetime >= DateTime.now %>
    <h1> <%= @event.name %></h1>
     <%= render 'shared/count_down_timer' %>
     <% if !event_over?(@event) %> 
