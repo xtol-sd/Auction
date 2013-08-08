@@ -29,30 +29,25 @@ class ItemsController < ApplicationController
     @event = Event.find_by_current(true)
     @item = @event.items.build
     @user = User.find(current_user)
-  
+    
     @donation = @item.build_donation
-    @photo = @item.photos.build 
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @item }
-    end
   end
 
   def edit
     @event = Event.find_by_current(true)
     @item = Item.find(params[:id])
-    @user = User.find(current_user)
+    @user = User.find(current_user)  
   end
 
   def create
     @user = User.find(current_user)
     @event = Event.find(params[:event_id])
     @item = @event.items.build(params[:item])
-
+ 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to _my_donations_path, notice: 'Item was submitted for approval.' }
+        Photo.create(:item_id => @item.id, :image => "default_image.png")
+        format.html { redirect_to edit_event_item_path(@event,@item), notice: 'Item text was submitted for approval. Would you like to add a photo?' }
         format.json { render json: @item, status: :created, location: @item }
       else
         format.html { render action: "new" }
